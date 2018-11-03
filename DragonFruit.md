@@ -9,9 +9,9 @@ static void Main(string[] args)
 }
 ```
 
-Interpreting the `string[]` arguments into behaviors has been left as a task for the developer. Did the user ask for help? Did they pass invalid input? Does the input map correctly the types that I need if they're not `string`? These problems were not solved for you.
+Interpreting the `string[]` arguments into behaviors has been left as a task for the developer. Did the user ask for help? Did they pass invalid input? Does the input map correctly to the types that I need if they're not `string`? These problems were not solved for you.
 
-What if you could declare a strongly-typed `Main` method? This was the question that led to the creation of the experiment called "DragonFruit", which allows you to create an entry point like this:
+What if you could declare a strongly-typed `Main` method? This was the question that led to the creation of the experiment called "DragonFruit", which allows you to create an entry point with arguments of various types and default values, like this:
 
 ```csharp
 static void Main(int intOption = 42, bool boolOption = false, FileInfo fileOption = null)
@@ -23,6 +23,13 @@ static void Main(int intOption = 42, bool boolOption = false, FileInfo fileOptio
 ```
 
 DragonFruit handles help requests, parsing errors, and argument binding for you.
+
+```shell
+> dotnet run
+The value of intOption is: 42
+The value of boolOption is: False
+The value of fileOption is: null 
+```
 
 You don't need to write any special code to get help support.
 
@@ -54,6 +61,8 @@ static void Main(int intOption = 42, bool boolOption = false, FileInfo fileOptio
 }
 ```
 
+The text of those comments will be shown when a user requests help.
+
 ```shell
 > dotnet run -- -h
 Usage:
@@ -66,7 +75,6 @@ Options:
 ```
 
 You can try out DragonFruit by installing the latest preview package.
-
 
 ```
 dotnet add package --source https://dotnet.myget.org/F/system-commandline/api/v3/index.json System.CommandLine.DragonFruit -v 0.1.0-*
