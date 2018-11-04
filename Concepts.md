@@ -1,5 +1,11 @@
 # System.CommandLine Concepts
 
+## Token
+
+
+## POSIX
+
+
 ## Command
 
 A command is a token on the command line that corresponds to an action that the app will perform. The simplest command line applications have only a root command. The app only does one thing. The way in which it does that one thing might vary, for example based on options and arguments that are passed, but it's basically the same thing. 
@@ -40,7 +46,7 @@ In both POSIX and Windows command lines, it's common for some options to have al
 
 ## Argument
 
-An argument is a value passed to an option.
+An argument is a value passed to an option or command.
 
 Arguments can have default values, expected types, and configurable arity. `System.CommandLine` will reject arguments that don't match these expectations. 
 
@@ -69,6 +75,8 @@ Options:
 ```
 
 In the first of these examples, a parse error resulted because the input "not-an-int" could not be converted to an `int`. In the second example, too many arguments were passed to `--int-option`. This is an example of an arity error. `--int-option` has an arity of exactly one (`ArgumentArity.ExactlyOne`), meaning that if the option is specified, a single argument must also be provided.
+
+In the sample below, intOption has a default of 42.
 
 Boolean options, sometimes called "flags", have an arity of `ArgumentArity.ZeroOrOne`. This is because all of the following are valid ways to specify a `bool` option:
 
@@ -124,7 +132,7 @@ The `[parse]` directive tells the parser to parse the input and return a diagram
 
 ## Middleware Pipeline
 
-While each command has a handler which `System.CommandLine` will route to based on input, there is also has a mechanism for taking some other action based on that input. The directives above short circuit the call to a command handler and take some other action. Other examples include the `--version` option that can be included in your app by calling `CommandLineBuilder.AddVersionOption()`, or the help support provided by calling `CommandLineBuilder.UseHelp()`.
+While each command has a handler which `System.CommandLine` will route to based on input, there is also a mechanism for taking some other action based on that input. The directives above short circuit the call to a command handler and take some other action. Other examples include the `--version` option that can be included in your app by calling `CommandLineBuilder.AddVersionOption()`, or the help support provided by calling `CommandLineBuilder.UseHelp()`.
 
 The mechanism that provides this is `System.CommandLine`'s middleware pipeline. It allows you to configure a chain of calls that can take action based on a `ParseResult` and return early, or call the next item in the chain. The last call in the chain is the handler for the specified command.
 
@@ -142,8 +150,10 @@ commandLineBuilder.UseMiddleware(async (context, next) => {
 });
 ```
 ```console
-> myapp [just-say-hi]
+> myapp [just-say-hi] --int-option 1234
 Hi!
 ```
+
+In the code above, the middleware responds to this directive and short-circuits. This means the normal action of the command (outputting values) does not occur.
 
 ## Renderer
