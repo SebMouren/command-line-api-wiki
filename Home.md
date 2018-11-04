@@ -16,10 +16,7 @@ To do this System.CommandLine contains three pillars of functionality:
 
 System.CommandLine is a layered system with an API layer that supports multiple application models to simplify working with the parser. You can also work directly with the underlying API. 
 
-![App Models Diagram](https://github.com/dotnet/System.CommandLine/wiki/images/AppModels.png)
-
-
-[[https://github.com/dotnet/System.CommandLine/wiki/images/AppModels.png|Layer Diagram]]
+![appmodels](https://user-images.githubusercontent.com/5844318/47970907-aed10080-e048-11e8-83dd-7e9dcd01c885.png)
 
 The simplest way to create your parser is with the [DragonFruit app model](DragonFruit). This works well if you have a single layer of commands (no subcommands). This approach adds a target to the build process. 
 
