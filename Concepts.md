@@ -10,7 +10,7 @@ When an app has subcommands, then the commands above them in the hierarchy typic
 
 ### Root Command
 
-The root command in `System.CommandLine` corresponds to your app itself. In the following example, the executable name is `myapp` and the room command name is `myapp`.
+The root command in `System.CommandLine` corresponds to your app itself. In the following example, the executable name is `myapp` and the root command name is `myapp`.
 
 ```shell
 > myapp [parse]
