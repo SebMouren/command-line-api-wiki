@@ -20,7 +20,7 @@ System.CommandLine is a layered system with an API layer that supports multiple 
 
 The simplest way to create your parser is with the [DragonFruit app model](DragonFruit). This works well if you have a single layer of commands (no subcommands). This approach adds a target to the build process. 
 
-If you have a complex API, or you want to work with the API directly to better understand it, you can access the [System.CommandLine API](UsingTheAPI) directly. 
+If you have a complex API, or you want to work with the API directly to better understand it, you can access the [System.CommandLine API](Using-The-API) directly. 
 
 We plan to add application models to fit niches between DragonFruit and direct API access in the future.
 
