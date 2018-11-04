@@ -8,8 +8,6 @@ Other command line apps support subcommands, meaning they can do more than one t
 
 When an app has subcommands, then the commands above them in the hierarchy typically do nothing by themselves. `dotnet add` is not a complete command because it has the subcommands `dotnet add package` and `dotnet add reference`.
 
-In `System.CommandLine`, 
-
 ### Root Command
 
 The root command in `System.CommandLine` corresponds to your app itself. In the following example, the executable name is `myapp` and the room command name is `myapp`.
