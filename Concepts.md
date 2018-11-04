@@ -4,7 +4,7 @@
 
 A command is a token on the command line that corresponds to an action that the app will perform. The simplest command line applications have only a root command. The app only does one thing. The way in which it does that one thing might vary, for example based on options and arguments that are passed, but it's basically the same thing. 
 
-Some command line apps support subcommands, meaning they can do more than one thing. `dotnet build` and `dotnet restore` are examples of different subcommands.
+Other command line apps support subcommands, meaning they can do more than one thing. `dotnet build` and `dotnet restore` are examples of different subcommands.
 
 When an app has subcommands, then the commands above them in the hierarchy typically do nothing by themselves. `dotnet add` is not a complete command because it has the subcommands `dotnet add package` and `dotnet add reference`.
 
