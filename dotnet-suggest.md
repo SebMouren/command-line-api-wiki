@@ -6,7 +6,7 @@ On the machine where you'd like to enable completion, you'll need to do two thin
 
 1. Install the `dotnet-suggest` global tool by running the following command:
 
-```shell
+```console
 > dotnet tool install dotnet-suggest -g --add-source https://dotnet.myget.org/F/system-commandline/api/v3/index.json --version 1.*
 ```
 
