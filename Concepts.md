@@ -12,7 +12,7 @@ When an app has subcommands, then the commands above them in the hierarchy typic
 
 The root command in `System.CommandLine` corresponds to your app itself. In the following example, the executable name is `myapp` and the root command name is `myapp`.
 
-```shell
+```console
 > myapp [parse]
 [ myapp *[ --int-option <42> ] *[ --bool-option <False> ] *[ --file-option ] ]
 
@@ -44,7 +44,7 @@ An argument is a value passed to an option.
 
 Arguments can have default values, expected types, and configurable arity. `System.CommandLine` will reject arguments that don't match these expectations. 
 
-```shell
+```console
 > myapp --int-option not-an-int
 Cannot parse argument 'not-an-int' as System.Int32.
 
@@ -72,7 +72,7 @@ In the first of these examples, a parse error resulted because the input "not-an
 
 Boolean options, sometimes called "flags", have an arity of `ArgumentArity.ZeroOrOne`. This is because all of the following are valid ways to specify a `bool` option:
 
-```shell
+```console
 > myapp --bool-option
 The value of intOption is: 42
 The value of boolOption is: True
@@ -101,7 +101,7 @@ In order to provide certain capabilities out of the box, so that you don't have 
 
 The `[suggest]` directive is one example. This directive tells your app to parse the input but act on it by providing suggestions rather than executing a command handler. 
 
-```shell
+```console
 > .\myapp [suggest] f
 --file-option
 ```
@@ -110,7 +110,7 @@ You may not use this directive directly yourself, but [`dotnet-suggest`](dotnet-
 
 As you're learning how to configure the parser, one directive in particular can be very useful: the `[parse]` directive. This one can also be useful to the user of your app when they're trying to learn how to use it. Here's an example:
 
-```shell
+```console
 > myapp [parse] --int-option not-an-int --file-option file.txt
 [ myapp ![ --int-option <not-an-int> ] [ --file-option <file.txt> ] *[ --bool-option <False> ] ]
 
@@ -141,7 +141,7 @@ commandLineBuilder.UseMiddleware(async (context, next) => {
     }
 });
 ```
-```shell
+```console
 > myapp [just-say-hi]
 Hi!
 ```
