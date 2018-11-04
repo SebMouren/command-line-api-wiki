@@ -76,8 +76,8 @@ Options:
 
 You can try out DragonFruit by installing the latest preview package.
 
-```
-dotnet add package --source https://dotnet.myget.org/F/system-commandline/api/v3/index.json System.CommandLine.DragonFruit -v 0.1.0-*
+```shell
+> dotnet add package --source https://dotnet.myget.org/F/system-commandline/api/v3/index.json System.CommandLine.DragonFruit -v 0.1.0-*
 ```
 
 
