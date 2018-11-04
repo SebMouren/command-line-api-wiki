@@ -1,6 +1,6 @@
-Welcome to the System.CommandLine wiki!
+# Welcome to the System.CommandLine wiki!
 
-# Our goal: 
+## Our goal: 
 
 _Give your user's a great experience with your command line applications - while you do nothing or almost nothing_
 
