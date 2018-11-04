@@ -1,6 +1,6 @@
 # DragonFruit
 
-The entry point for a .NET console application looks like this:
+The entry point for a normal .NET console application looks like this:
 
 ```csharp
 static void Main(string[] args)
@@ -9,9 +9,9 @@ static void Main(string[] args)
 }
 ```
 
-Interpreting the `string[]` arguments into behaviors has been left as a task for the developer. Did the user ask for help? Did they pass invalid input? Does the input map correctly to the types that I need if they're not `string`? These problems were not solved for you.
+Interpreting the `string[]` arguments into behaviors has been left as a task for the developer. Did the user ask for help? Did they pass invalid input? Does the input map correctly to the types that I need if they're not `string`? These problems are not solved for you.
 
-What if you could declare a strongly-typed `Main` method? This was the question that led to the creation of the experiment called "DragonFruit", which allows you to create an entry point with arguments of various types and default values, like this:
+What if you could declare a strongly-typed `Main` method? This was the question that led to the creation of the experimental app model called "DragonFruit", which allows you to create an entry point with arguments of various types and default values, like this:
 
 ```csharp
 static void Main(int intOption = 42, bool boolOption = false, FileInfo fileOption = null)
@@ -77,7 +77,7 @@ Options:
 You can try out DragonFruit by installing the latest preview package.
 
 ```shell
-> dotnet add package --source https://dotnet.myget.org/F/system-commandline/api/v3/index.json System.CommandLine.DragonFruit -v 0.1.0-*
+> dotnet add package --source https://dotnet.myget.org/F/system-commandline/api/v3/index.json System.CommandLine.DragonFruit -v 0.1.0-alpha-63504-01
 ```
 
 
