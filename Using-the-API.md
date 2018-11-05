@@ -33,7 +33,6 @@ The `GetParserBuilder` method creates a CommandLineBulider which understands bot
 ```C#
         public static CommandLineBuilder GetParserBuilder()
         {
-            IToolActions toolActions = new ToolActions();
             var builder =  new CommandLineBuilder()
                 .AddCommand(GetToolCommand());
             // Additional commands would be defined here
@@ -103,9 +102,8 @@ namespace DotMetal
 
         public static CommandLineBuilder GetParserBuilder()
         {
-            IToolActions toolActions = new ToolActions();
             var builder =  new CommandLineBuilder()
-                .AddCommand(GetToolCommand(toolActions));
+                .AddCommand(GetToolCommand());
             return builder;
         }
 
@@ -199,13 +197,11 @@ namespace DotMetal
 
 The invocation is where the important code of your application runs! 
 
-(The parser can also parse into a `Result` structure, but it is awkward to interact with.)
-
 Defining the action to be performed within the structural definition allows the correct values to be automatically bound and passed to the action. The code performing the action can generally be ignorant of all aspects of the syntax used to call it. 
 
-NOTE: Currently, you need to use the result directly to access arguments and options on the outer commands of the request. For example, `dotnet add` has an argument for project name which occurs in the syntax prior to the `package` or `reference` subcommand.
+The parser can also parse into a `Result` structure, but it is a bit more difficult to interact with. Currently, you need to use the result directly to access arguments and options on the outer commands of the request. For example, `dotnet add` has an argument for project name which occurs in the syntax prior to the `package` or `reference` subcommand.
 
-The invocation can be any delegate matching the signature. This includes lambda expressions, static methods in a specific class, or methods on an instance available. In the sample you can download, I created an interface that has methods for each of the `tool` subcommads. I created a dummy implementation that just outputs what you are requesting. We look forward to fun discussions about the best way to shim between your CLI code and your application code. 
+The invocation can be any delegate matching the signature. This includes lambda expressions, static methods in a specific class, or methods on an instance that is available. 
 
 ## A special case
 
