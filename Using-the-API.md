@@ -1,6 +1,6 @@
 # Using the System.CommandLine API
 
-To illustrate how to use System.CommandLine API, this walkthrough reimplements `dotnet tool` portion of the .NET Core SDK, using the sample app `dotmetal`. A simpler approach is offered by the DragonFruit application model and we hope additional application models will be created to fit other scenarios. You want to use the System.CommandLine API when the application models don't support features you're application needs. This sample is called `dotmetal` because this is how you work "on the metal" directly with System.CommandLine.
+To illustrate how to use System.CommandLine API, this walkthrough reimplements the `dotnet tool` portion of the .NET Core SDK, using the sample app `dotnetmetal`. A simpler approach is offered by the DragonFruit application model and we hope additional application models will be created to fit other scenarios. You want to use the System.CommandLine API when the application models don't support features you're application needs. This sample is called `dotnetmetal` because this is how you work "on the metal" directly with System.CommandLine.
 
 ## The basic parser
 
@@ -10,7 +10,7 @@ The `Main` method of the application calls a method that defines the parser, bui
 using System.CommandLine.Invocation;
 using System.Threading.Tasks;
 
-namespace DotMetal
+namespace DotnetMetal
 {
     class Program
     {
@@ -26,7 +26,7 @@ namespace DotMetal
 
 The `GetParserBuilder` method returns a `CommandLineBuilder`. The `CommandLineBuilder` allows you to gather all the details about your syntax and how you want the pipeline to work. `Build` creates the actual `Parser` instance, which is immutable during the evaluation, validation and invocation phases. 
 
-The main method iteself doesn't need to know anything about the syntax of the CLI. 
+The main method itself doesn't need to know anything about the syntax of the CLI. 
 
 The `GetParserBuilder` method creates a CommandLineBulider which understands both commands and the middleware pipeline. Since the `tool` command is just one part of the syntax, the `GetParserBuilder` method calls a method for each of the commands that will eventually be supported:
 
