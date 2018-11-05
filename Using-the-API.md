@@ -209,6 +209,6 @@ The invocation can be any delegate matching the signature. This includes lambda 
 
 ## A special case
 
-In the current design, commands can either be leaf or parent commands. They cannot be both. This makes implementing actions on a command due to the presence of an option impossible. An example of this is `dotnet --info`. 
+In the current design, only leaf commands' handlers will be executed. Triggering a handler based on an option on a command that is not a leaf (for example, `dotnet --info`), is not supported. This behavior can be accomplished using middleware. This is how help and `CommandLineBuilder.AddVersionOption` are implemented.
 
 Our current plan is to require these to be implemented as commands - `dotnet --info` actually does something. This works today, but help is not correct. 
