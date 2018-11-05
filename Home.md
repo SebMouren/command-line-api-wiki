@@ -2,7 +2,11 @@
 
 ## Our goal
 
-_Give your user's a great experience with your .NET command line applications - while you do nothing or almost nothing_
+_Give your user's a great experience with your .NET command line applications - while letting you focus on the great application you're writing._
+
+or perhaps more simply
+
+_Leave the plumbing to us_
 
 ## Overview
 
