@@ -2,7 +2,7 @@
 
 ## Our goal
 
-_Give your user's a great experience with your .NET command line applications - while letting you focus on the great application you're writing._
+_Give your users a great experience with your .NET command line applications - while letting you focus on the great application you're writing._
 
 or perhaps more simply
 
