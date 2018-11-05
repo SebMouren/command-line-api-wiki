@@ -67,7 +67,7 @@ The `handler` argument to the `Command` constructor indicates what action should
 Adding the next subcommand, adds some new options, but also results in a new copy of information for the `--global` and `--tool-path` options. 
 
 ```C#
-            command.AddCommand(new Command("upgrade", Strings.toolUpgradeDescription,
+            command.AddCommand(new Command("update", Strings.toolUpgradeDescription,
                 new Option[]
                 { 
                     new Option(new string[] { "--global", "-g" }, Strings.toolGlobalOptionDescription),
