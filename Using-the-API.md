@@ -162,9 +162,9 @@ There are a number of things all (or almost all) console applications should do 
 * Displaying help
 * Offering suggestions
 * Diagraming how the parser understood a particular command, at least for debugging
-* Debugging _(John: What does the debugDirective do?)_
-* Reporting errors _(John: Is this validation failures?)_
-* Handling exceptions _(John: what does this do other than set exist code?)_
+* Debugging _(Jon: What does the debugDirective do?)_
+* Reporting errors _(Jon: Is this validation failures?)_
+* Handling exceptions _(Jon: what does this do other than set exist code?)_
 
 All of these operations can be added to the pipeline with extension method on the `CommandLineBuilder`
 
