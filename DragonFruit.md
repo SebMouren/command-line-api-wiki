@@ -24,7 +24,7 @@ static void Main(int intOption = 42, bool boolOption = false, FileInfo fileOptio
 
 DragonFruit handles help requests, parsing errors, and argument binding for you.
 
-```shell
+```console
 > dotnet run
 The value of intOption is: 42
 The value of boolOption is: False
@@ -33,7 +33,7 @@ The value of fileOption is: null
 
 You don't need to write any special code to get help support.
 
-```shell
+```console
 > dotnet run -- -h
 Usage:
   myapp [options]
@@ -63,7 +63,7 @@ static void Main(int intOption = 42, bool boolOption = false, FileInfo fileOptio
 
 The text of those comments will be shown when a user requests help.
 
-```shell
+```console
 > dotnet run -- -h
 Usage:
   myapp [options]
@@ -76,7 +76,7 @@ Options:
 
 You can try out DragonFruit by installing the latest preview package.
 
-```shell
+```console
 > dotnet add package --source https://dotnet.myget.org/F/system-commandline/api/v3/index.json System.CommandLine.DragonFruit -v 0.1.0-alpha-63505-02
 ```
 
