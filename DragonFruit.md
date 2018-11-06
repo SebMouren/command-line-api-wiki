@@ -9,7 +9,7 @@ static void Main(string[] args)
 }
 ```
 
-Interpreting the `string[]` arguments into behaviors has been left as a task for the developer. Did the user ask for help? Did they pass invalid input? Does the input map correctly to the types that I need if they're not `string`? These problems are not solved for you.
+Interpreting the `string[]` arguments into behaviors has been left as a task for the developer. Did the user ask for help? Did they pass invalid input? Does the input map correctly to the types that you need if they're not `string`? These problems are not solved for you.
 
 What if you could declare a strongly-typed `Main` method? This was the question that led to the creation of the experimental app model called "DragonFruit", which allows you to create an entry point with arguments of various types and default values, like this:
 
