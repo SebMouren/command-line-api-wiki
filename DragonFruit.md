@@ -80,5 +80,61 @@ You can try out DragonFruit by installing the latest preview package.
 > dotnet add package --source https://dotnet.myget.org/F/system-commandline/api/v3/index.json System.CommandLine.DragonFruit -v 0.1.0-alpha-63507-01
 ```
 
+## DragonFruit Walkthrough
+This is a quick walkthrough that will demonstrate adding DragonFruit to your console application. macOS is used for this example. If you are using a different OS, you may need to adjust how you create your project directory and the [Runtime Identifier](https://docs.microsoft.com/en-us/dotnet/core/rid-catalog) used when you publish.
 
+The first step is to open your terminal and create a console application.
+
+```console
+> mkdir myconsoleapp
+> cd myconsoleapp
+> dotnet new console
+```
+
+Add DragonFruit to your console application:
+
+```console
+> dotnet add package --source https://dotnet.myget.org/F/system-commandline/api/v3/index.json System.CommandLine.DragonFruit -v 0.1.0-alpha-63507-01
+```
+
+In your favorite editor, change your `Program.cs` file to look like this:
+```csharp
+using System;
+using System.CommandLine.DragonFruit;
+
+namespace myconsoleapp
+{
+    class Program
+    {
+        static void Main(int intOption)
+        {
+            Console.WriteLine($"Hello world, my number is {intOption}");
+        }
+    }
+}
+```
+
+That's all there is to it! You can take advantage of all of the out-of-the-box goodness that DragonFruit has to offer!
+ 
+Now let's see the application in action. Start by creating an executable and change directories until you get to the executable you created:
+```console
+> dotnet publish -c Release -r osx-x64
+> cd bin/Release/netcoreapp2.1/osx-64/publish
+```
+
+Try viewing help:
+```console
+> ./myconsoleapp -h
+```
+
+Try parsing your input to see if it is valid:
+```console
+> ./myconsoleapp [parse] --invalid-test
+> ./myconsoleapp [parse] --int-option 9
+```
+
+Try attaching a debugger:
+```console
+> ./myconsoleapp [debug] --int-option 9
+```
 
