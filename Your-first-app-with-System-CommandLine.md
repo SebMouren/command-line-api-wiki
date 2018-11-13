@@ -1,4 +1,4 @@
-# Building your first app with System.CommandLine (syntax first)
+# Building your first app with System.CommandLine
 
 This walkthrough will show you how to get started using System.CommandLine to build a command line application.
 
