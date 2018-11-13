@@ -49,7 +49,7 @@ Now change your `Main` method to this:
 ```csharp
 static async Task Main(string[] args)
 {
-    // Create some options and a parser
+    // Create an option and a root command
     Option intOption = new Option(
         "--an-int", 
         "An option that accepts an int as an argument",
