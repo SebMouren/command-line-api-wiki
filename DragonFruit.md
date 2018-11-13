@@ -77,7 +77,7 @@ Options:
 You can try out DragonFruit by installing the latest preview package.
 
 ```console
-> dotnet add package --source https://dotnet.myget.org/F/system-commandline/api/v3/index.json System.CommandLine.DragonFruit -v 0.1.0-alpha-63507-01
+> dotnet add package --source https://dotnet.myget.org/F/system-commandline/api/v3/index.json System.CommandLine.DragonFruit -v 0.1.0-alpha-63513-01
 ```
 
 ## DragonFruit Walkthrough
@@ -94,7 +94,7 @@ The first step is to open your terminal and create a console application.
 Add DragonFruit to your console application:
 
 ```console
-> dotnet add package --source https://dotnet.myget.org/F/system-commandline/api/v3/index.json System.CommandLine.DragonFruit -v 0.1.0-alpha-63507-01
+> dotnet add package --source https://dotnet.myget.org/F/system-commandline/api/v3/index.json System.CommandLine.DragonFruit -v 0.1.0-alpha-63513-01
 ```
 
 In your favorite editor, change your `Program.cs` file to look like this:

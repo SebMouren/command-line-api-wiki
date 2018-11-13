@@ -164,30 +164,28 @@ There are a number of things all (or almost all) console applications should do 
 * Reporting parser errors, such as validation failures or unexpected tokens
 * Providing graceful exception handling
 
-All of these operations can be added to the pipeline with extension method on the `CommandLineBuilder`
+All of these operations can be added to the pipeline with extension methods on `CommandLineBuilder`
 
 
 ```c#
 using System.CommandLine.Invocation;
 using System.Threading.Tasks;
 
-namespace DotMetal
+class Program
 {
-    class Program
+    static async Task Main(string[] args)
     {
-        static async Task Main(string[] args)
-        {
-            var parser = CreateCli.GetParserBuilder()
-                          .UseHelp()
-                          .UseSuggestDirective()
-                          .UseParseDirective()
-                          .UseDebugDirective()
-                          .UseParseErrorReporting()
-                          .RegisterWithDotnetSuggest()
-                          .UseExceptionHandler()
-                          .Build();
-            await parser.InvokeAsync(args);
-        }
+        var parser = new CommandLineBuilder()
+                         .UseHelp()
+                         .UseSuggestDirective()
+                         .UseParseDirective()
+                         .UseDebugDirective()
+                         .UseParseErrorReporting()
+                         .RegisterWithDotnetSuggest()
+                         .UseExceptionHandler()
+                         .Build();
+                        
+        await parser.InvokeAsync(args);
     }
 }
 
@@ -195,7 +193,7 @@ namespace DotMetal
 
 ## Alternatives for invocation handler
 
-The invocation is where the important code of your application runs! 
+The invocation is where the important code of your application runs.
 
 Defining the action to be performed within the structural definition allows the correct values to be automatically bound and passed to the action. The code performing the action can generally be ignorant of all aspects of the syntax used to call it. 
 
