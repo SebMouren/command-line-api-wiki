@@ -40,7 +40,6 @@ You'll need a few more `using` directives:
 
 ```csharp
 using System.CommandLine;
-using System.CommandLine.Builder;
 using System.CommandLine.Invocation;
 using System.Threading.Tasks;
 ```
@@ -68,7 +67,7 @@ static async Task Main(string[] args)
 You're ready to run your program.
 
 ```console
-myApp> dotnet run -- --an-int 123
+> dotnet run -- --an-int 123
 Parsed: 123
 ```
 
