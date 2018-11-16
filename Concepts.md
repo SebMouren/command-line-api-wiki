@@ -2,10 +2,6 @@
 
 ## Token
 
-
-## POSIX
-
-
 ## Command
 
 A command is a token on the command line that corresponds to an action that the app will perform. The simplest command line applications have only a root command. The app only does one thing. The way in which it does that one thing might vary, for example based on options and arguments that are passed, but it's basically the same thing. 
@@ -155,5 +151,3 @@ Hi!
 ```
 
 In the code above, the middleware responds to this directive and short-circuits. This means the normal action of the command (outputting values) does not occur.
-
-## Renderer
