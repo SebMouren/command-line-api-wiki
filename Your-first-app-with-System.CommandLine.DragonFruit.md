@@ -14,7 +14,7 @@ Open a new console and run the following commands:
 ## Install the System.CommandLine.DragonFruit package
 
 ```console
-> dotnet add package --source https://dotnet.myget.org/F/system-commandline/api/v3/index.json System.CommandLine.DragonFruit -v 0.1.0-alpha-63516-10
+> dotnet add package --source https://dotnet.myget.org/F/system-commandline/api/v3/index.json System.CommandLine.DragonFruit -v 0.1.0-alpha-63519-01
 ```
 
 ## Add some code

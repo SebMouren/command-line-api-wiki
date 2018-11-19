@@ -14,7 +14,7 @@ Open a new console and run the following commands:
 ## Install the System.CommandLine.Experimental package
 
 ```console
-> dotnet add package --source https://dotnet.myget.org/F/system-commandline/api/v3/index.json System.CommandLine.Experimental -v 0.1.0-alpha-63516-10
+> dotnet add package --source https://dotnet.myget.org/F/system-commandline/api/v3/index.json System.CommandLine.Experimental -v 0.1.0-alpha-63519-01
 ```
 
 ## Add some code
@@ -47,20 +47,24 @@ using System.Threading.Tasks;
 Now change your `Main` method to this:
 
 ```csharp
-static async Task Main(string[] args)
+static int Main(string[] args)
 {
-    // Create an option and a root command
+    // Create some options and a parser
     Option intOption = new Option(
-        "--an-int", 
+        "--an-int",
         "An option that accepts an int as an argument",
         new Argument<int>());
 
     var rootCommand = new RootCommand();
     rootCommand.AddOption(intOption);
-    rootCommand.Handler = CommandHandler.Create<int>(anInt => Console.WriteLine($"Parsed: {anInt}"));
+    rootCommand.Handler = CommandHandler.Create<int, InvocationContext>((anInt, ctx) =>
+    {
+        Environment.ExitCode = 0;
+        Console.WriteLine($"Parsed: {anInt}");
+    });
 
     // Parse the incoming args and invoke the handler
-    await rootCommand.InvokeAsync(args);
+    return rootCommand.InvokeAsync(args).Result;
 }
 ```
 
