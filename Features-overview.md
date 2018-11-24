@@ -1,5 +1,5 @@
 System.CommandLine provides a set of default features that are useful to people using it to develop apps as well as to the users of those apps. This is a quick overview of those features, using the app we created in 
-[[Your first app with System.CommandLine|Your-first-app-with-System.CommandLine]] or [[Your first app with System.CommandLine.DragonFruit|Your-first-app-with-System.CommandLine.DragonFruit]] (which are functionally equivalent). 
+[Your first app with System.CommandLine](Your-first-app-with-System.CommandLine) or [Your first app with System.CommandLine.DragonFruit](Your-first-app-with-System.CommandLine.DragonFruit) (which are functionally equivalent). 
 
 ### Get help
 
@@ -25,5 +25,16 @@ Users might be used to different prefixes in different ecosystems, especially if
 > myapp --help
 > myapp -?
 > myapp /?
+```
+
+### Version option
+
+Providing a way to check the version of your app is helpful to your users.
+
+System.CommandLine provides this by default. In the [help](Features-overview.md#get-help) example you might have noticed an option, `--version`, that was not explicitly configured in the sample code. When you run your program with this option, you'll see something like this:
+
+```console
+> myapp --version
+1.0.0
 ```
 
