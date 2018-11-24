@@ -38,11 +38,8 @@ Hello World!
 The default main only takes `string` arguments as an array. With DragonFruit, you can accept named arguments of various types and specify default values. Change your `Main` method to this:
 
 ```csharp
- class Program
+class Program
 {
-    /// <summary>
-    /// My example app
-    /// </summary>
     /// <param name="intOption">An option whose argument is parsed as an int</param>
     /// <param name="boolOption">An option whose argument is parsed as a bool</param>
     /// <param name="fileOption">An option whose argument is parsed as a FileInfo</param>
@@ -64,7 +61,6 @@ The value for --bool-option is: False
 The value for --file-option is: null
 ```
 
-
 This program is equivalent to the one demonstrated in [[Your first app with System.CommandLine|Your-first-app-with-System.CommandLine]].
 
-To explore its features, take a look at [[Features: overview|Features-overview]]
+To explore its features, take a look at [Features: overview](Features-overview)
