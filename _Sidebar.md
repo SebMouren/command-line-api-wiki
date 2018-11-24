@@ -6,6 +6,6 @@
 ##### Features
 * [Help](Features-overview#get-help)
 * [Version option](Features-overview#version-option)
+* [Suggestions](Features-overview#Suggestions)
 * [Parse preview](Features-overview#parse-preview)
 * [Debugging](Features-overview#debugging)
-* [Suggestions](Features-overview#Suggestions)

@@ -38,6 +38,14 @@ Providing a way to check the version of your app is helpful to your users.
 1.0.0
 ```
 
+### Suggestions
+
+Programs written using `System.CommandLine` have built-in support for tab completion. 
+
+![suggest](https://user-images.githubusercontent.com/547415/48972576-1217d800-efe2-11e8-8653-8063ddc6864f.gif)
+
+To enable it, the end user has to take a few steps once per shell, outlined [here](dotnet-suggest). Once this is done, completions will work for all apps written using `System.CommandLine`.
+
 ### Parse preview
 
 Both users and developers might often find it useful to see how an app will parse a particular input. One of the default features of a `System.CommandLine` app is the `[parse]` directive, which lets you preview a parse:
@@ -64,11 +72,3 @@ Attach your debugger to process 14616 and then press any key.
 ```
 
 Once you've attached your debugger to the specified process, press any key and execution will proceed to your breakpoint.
-
-### Suggestions
-
-Programs written using `System.CommandLine` have built-in support for tab completion. 
-
-![suggest](https://user-images.githubusercontent.com/547415/48972576-1217d800-efe2-11e8-8653-8063ddc6864f.gif)
-
-To enable it, the end user has to take a few steps once per shell, outlined [here](dotnet-suggest).
