@@ -4,4 +4,4 @@
 * [System.CommandLine.DragonFruit](Your-first-app-with-System.CommandLine.DragonFruit)
 
 ##### Features
-* [Help](Fetures-overview#get-help)
+* [Help](Features-overview#get-help)
