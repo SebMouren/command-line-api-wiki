@@ -110,7 +110,7 @@ The `[suggest]` directive is one example. This directive tells your app to parse
 --file-option
 ```
 
-You may not use this directive directly yourself, but [`dotnet-suggest`](dotnet-suggest.md) uses it to provide shell completions.
+You may not use this directive directly yourself, but [`dotnet-suggest`](dotnet-suggest) uses it to provide shell completions.
 
 As you're learning how to configure the parser, one directive in particular can be very useful: the `[parse]` directive. This one can also be useful to the user of your app when they're trying to learn how to use it. Here's an example:
 

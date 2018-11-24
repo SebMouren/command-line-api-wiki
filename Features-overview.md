@@ -31,7 +31,7 @@ Users might be used to different prefixes in different ecosystems, especially if
 
 Providing a way to check the version of your app is helpful to your users.
 
-System.CommandLine provides this by default. In the [help](Features-overview.md#get-help) example you might have noticed an option, `--version`, that was not explicitly configured in the sample code. When you run your program with this option, you'll see something like this:
+System.CommandLine provides this by default. In the [help](Features-overview#get-help) example you might have noticed an option, `--version`, that was not explicitly configured in the sample code. When you run your program with this option, you'll see something like this:
 
 ```console
 > myapp --version
