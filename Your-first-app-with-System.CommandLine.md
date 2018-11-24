@@ -41,6 +41,7 @@ You'll need a few more `using` directives:
 ```csharp
 using System.CommandLine;
 using System.CommandLine.Invocation;
+using System.IO;
 using System.Threading.Tasks;
 ```
 
@@ -51,16 +52,29 @@ static int Main(string[] args)
 {
     // Create some options and a parser
     Option intOption = new Option(
-        "--an-int",
-        "An option that accepts an int as an argument",
-        new Argument<int>());
+        "--int-option",
+        "An option whose argument is parsed as an int",
+        new Argument<int>(defaultValue: 42));
+    Option boolOption = new Option(
+        "--bool-option",
+        "An option whose argument is parsed as a bool",
+        new Argument<bool>());
+    Option fileOption = new Option(
+        "--file-option",
+        "An option whose argument is parsed as a FileInfo",
+        new Argument<FileInfo>());
 
+    // Add them to the root command
     var rootCommand = new RootCommand();
     rootCommand.AddOption(intOption);
-    rootCommand.Handler = CommandHandler.Create<int, InvocationContext>((anInt, ctx) =>
+    rootCommand.AddOption(boolOption);
+    rootCommand.AddOption(fileOption);
+
+    rootCommand.Handler = CommandHandler.Create<int, bool, FileInfo>((i, b, f) =>
     {
-        Environment.ExitCode = 0;
-        Console.WriteLine($"Parsed: {anInt}");
+        Console.WriteLine($"The value for --int-option is: {i}");
+        Console.WriteLine($"The value for --bool-option is: {b}");
+        Console.WriteLine($"The value for --file-option is: {f?.FullName ?? "null"}");
     });
 
     // Parse the incoming args and invoke the handler
@@ -71,7 +85,12 @@ static int Main(string[] args)
 You're ready to run your program.
 
 ```console
-> dotnet run -- --an-int 123
-Parsed: 123
+> dotnet run -- --int-option 123
+The value for --int-option is: 0
+The value for --bool-option is: False
+The value for --file-option is: null
 ```
 
+This program is equivalent to the one demonstrated in [[Your first app with System.CommandLine.DragonFruit|Your-first-app-with-System.CommandLine.DragonFruit]].
+
+To explore its features, take a look at [[Features: overview|Features-overview]]

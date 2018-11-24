@@ -1,6 +1,6 @@
-# Building your first app with System.CommandLine
+# Building your first app with System.CommandLine.DragonFruit
 
-This walkthrough will show you how to get started using System.CommandLine.DragonFruit to build a command line application.
+This walkthrough will show you how to get started using the System.CommandLine.DragonFruit app model to build a command line application.
 
 ## Create a new console app
 
@@ -38,29 +38,33 @@ Hello World!
 The default main only takes `string` arguments as an array. With DragonFruit, you can accept named arguments of various types and specify default values. Change your `Main` method to this:
 
 ```csharp
-/// <summary>
-/// My example app
-/// </summary>
-/// <param name="intOption">An option whose argument will bind to an int</param>
-/// <param name="boolOption">An option whose argument will bind to a bool</param>
-/// <param name="fileOption">An option whose argument will bind to a FileInfo</param>
-static void Main(int intOption = 42, bool boolOption = false, FileInfo fileOption = null)
+ class Program
 {
-    Console.WriteLine($"The value of intOption is: {intOption}");
-    Console.WriteLine($"The value of boolOption is: {boolOption}");
-    Console.WriteLine($"The value of fileOption is: {fileOption?.FullName ?? "null"}");
+    /// <summary>
+    /// My example app
+    /// </summary>
+    /// <param name="intOption">An option whose argument is parsed as an int</param>
+    /// <param name="boolOption">An option whose argument is parsed as a bool</param>
+    /// <param name="fileOption">An option whose argument is parsed as a FileInfo</param>
+    static void Main(int intOption = 42, bool boolOption = false, FileInfo fileOption = null)
+    {
+        Console.WriteLine($"The value for -int-option is: {intOption}");
+        Console.WriteLine($"The value for -bool-option is: {boolOption}");
+        Console.WriteLine($"The value for -file-option is: {fileOption?.FullName ?? "null"}");
+    }
 }
 ```
 
+You're ready to run your program.
+
+```console
+> dotnet run -- --int-option 123
+The value for --int-option is: 0
+The value for --bool-option is: False
+The value for --file-option is: null
+```
 
 
+This program is equivalent to the one demonstrated in [[Your first app with System.CommandLine|Your-first-app-with-System.CommandLine]].
 
-
-
-
-
-
-
-
-
-
+To explore its features, take a look at [[Features: overview|Features-overview]]
