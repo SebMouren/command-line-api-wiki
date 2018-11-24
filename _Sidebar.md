@@ -5,4 +5,4 @@
 
 ##### Features
 * [Help](Features-overview.md#get-help)
-* [Version option](Features-overview.md#version-option)
+* [Version option](Features-overview#version-option)
