@@ -112,20 +112,6 @@ The `[suggest]` directive is one example. This directive tells your app to parse
 
 You may not use this directive directly yourself, but [`dotnet-suggest`](dotnet-suggest) uses it to provide shell completions.
 
-As you're learning how to configure the parser, one directive in particular can be very useful: the `[parse]` directive. This one can also be useful to the user of your app when they're trying to learn how to use it. Here's an example:
-
-```console
-> myapp [parse] --int-option not-an-int --file-option file.txt
-[ myapp ![ --int-option <not-an-int> ] [ --file-option <file.txt> ] *[ --bool-option <False> ] ]
-
-```
-
-The `[parse]` directive tells the parser to parse the input and return a diagram (`ParseResult.Diagram()`) of the result. Some things worth noting in the above example:
-
-* Commands (`myapp`), their child options, and the arguments to those options are grouped using square brackets. 
-* For the option result `![ --int-option <not-an-int> ]`, the `!` indicates a parsing error. `not-an-int` could not be parsed to the expectd type.
-* For the option result `*[ --bool-option <False> ]`, the `*` indicates that a value was not specified on the command line but the parser's configured default was used. `False` is the effective value for this option.
-
 ## Middleware Pipeline
 
 While each command has a handler which `System.CommandLine` will route to based on input, there is also a mechanism for taking some other action based on that input. The directives above short circuit the call to a command handler and take some other action. Other examples include the `--version` option that can be included in your app by calling `CommandLineBuilder.AddVersionOption()`, or the help support provided by calling `CommandLineBuilder.UseHelp()`.

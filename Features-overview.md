@@ -1,4 +1,4 @@
-System.CommandLine provides a set of default features that are useful to people using it to develop apps as well as to the users of those apps. This is a quick overview of those features, using the app we created in 
+`System.CommandLine` provides a set of default features that are useful to people using it to develop apps as well as to the users of those apps. This is a quick overview of those features, using the app we created in 
 [Your first app with System.CommandLine](Your-first-app-with-System.CommandLine) or [Your first app with System.CommandLine.DragonFruit](Your-first-app-with-System.CommandLine.DragonFruit) (which are functionally equivalent). 
 
 ### Get help
@@ -17,7 +17,7 @@ Options:
   --version        Display version information
 ```
 
-Users might be used to different prefixes in different ecosystems, especially if your app targets .NET Core and is used cross-platform, so apps build on System.CommandLine understand many different ways of requesting help. The following are all equivalent:
+Users might be used to different prefixes in different ecosystems, especially if your app targets .NET Core and is used cross-platform, so apps build on `System.CommandLine` understand many different ways of requesting help. The following are all equivalent:
 
 ```console
 > myapp -h
@@ -31,10 +31,25 @@ Users might be used to different prefixes in different ecosystems, especially if
 
 Providing a way to check the version of your app is helpful to your users.
 
-System.CommandLine provides this by default. In the [help](Features-overview#get-help) example you might have noticed an option, `--version`, that was not explicitly configured in the sample code. When you run your program with this option, you'll see something like this:
+`System.CommandLine` provides this by default. In the [help](Features-overview#get-help) example you might have noticed an option, `--version`, that was not explicitly configured in the sample code. When you run your program with this option, you'll see something like this:
 
 ```console
 > myapp --version
 1.0.0
 ```
 
+### Parse preview
+
+Both users and developers might often find it useful to see how an app will parse a particular input. One of the default features of a `System.CommandLine` app is the `[parse]` directive, which lets you preview a parse:
+
+```console
+> myapp [parse] --int-option not-an-int --file-option file.txt
+[ myapp ![ --int-option <not-an-int> ] [ --file-option <file.txt> ] *[ --bool-option <False> ] ]
+
+```
+
+The `[parse]` directive tells the parser to parse the input and return a diagram of the result. Some things worth noting in the above example:
+
+* Commands (`myapp`), their child options, and the arguments to those options are grouped using square brackets. 
+* For the option result `![ --int-option <not-an-int> ]`, the `!` indicates a parsing error. `not-an-int` could not be parsed to the expected type.
+* For the option result `*[ --bool-option <False> ]`, the `*` indicates that a value was not specified on the command line, so the parser's configured default was used. `False` is the effective value for this option.
