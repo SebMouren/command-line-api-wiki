@@ -53,3 +53,22 @@ The `[parse]` directive tells the parser to parse the input and return a diagram
 * Commands (`myapp`), their child options, and the arguments to those options are grouped using square brackets. 
 * For the option result `![ --int-option <not-an-int> ]`, the `!` indicates a parsing error. `not-an-int` could not be parsed to the expected type.
 * For the option result `*[ --bool-option <False> ]`, the `*` indicates that a value was not specified on the command line, so the parser's configured default was used. `False` is the effective value for this option.
+
+### Debugging
+
+When you're developing your app and you find that the parse preview isn't enough to explain something that's happening internally, the `[debug]` directive might help you. Set a breakpoint inside your code, prepend your command line input with `"[debug]"`, and hit `enter`:
+
+```console
+myapp [debug] --file-option does-not-exist.txt
+Attach your debugger to process 14616 and then press any key.
+```
+
+Once you've attached your debugger to the specified process, press any key and execution will proceed to your breakpoint.
+
+### Suggestions
+
+Programs written using `System.CommandLine` have built-in support for tab completion. 
+
+![suggest](https://user-images.githubusercontent.com/547415/48972576-1217d800-efe2-11e8-8653-8063ddc6864f.gif)
+
+To enable it, the end user has to take a few steps once per shell, outlined [here](dotnet-suggest).
