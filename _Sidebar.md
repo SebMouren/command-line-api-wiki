@@ -1,7 +1,7 @@
 #### Getting started
 ##### Your first app
-* [System.CommandLine](Your-first-app-with-System.CommandLine.md)
-* [System.CommandLine.DragonFruit](Your-first-app-with-System.CommandLine.DragonFruit.md)
+* [System.CommandLine](Your-first-app-with-System.CommandLine)
+* [System.CommandLine.DragonFruit](Your-first-app-with-System.CommandLine.DragonFruit)
 
 ##### Features
 * [Help](Features-overview#get-help)
