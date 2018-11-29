@@ -16,6 +16,6 @@ On the machine where you'd like to enable completion, you'll need to do two thin
 
 For bash, add [dotnet-suggest-shim.bash](https://github.com/dotnet/System.CommandLine/blob/master/src/System.CommandLine.Suggest/dotnet-suggest-shim.bash) to `~/.bash_profile`.
 
-For PowerShell, use [dotnet-suggest-shim.ps1](https://github.com/dotnet/System.CommandLine/blob/master/src/System.CommandLine.Suggest/dotnet-suggest-shim.ps1) to  `C:\Users\<USERNAME>\Documents\PowerShell\Microsoft.PowerShell_profile.ps1`.
+For PowerShell, add [dotnet-suggest-shim.ps1](https://github.com/dotnet/System.CommandLine/blob/master/src/System.CommandLine.Suggest/dotnet-suggest-shim.ps1) to  `C:\Users\<USERNAME>\Documents\PowerShell\Microsoft.PowerShell_profile.ps1`.
 
 (For other shells, please [look for](https://github.com/dotnet/System.CommandLine/issues?q=is%3Aissue+is%3Aopen+label%3A%22shell+suggestion%22) or open an [issue](https://github.com/dotnet/System.CommandLine/issues).)
