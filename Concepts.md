@@ -36,9 +36,13 @@ In Windows command lines, you'll often see options represented like this:
 
 While `System.CommandLine` can be configured to use these and other prefixes, the default is the POSIX style.
 
-### Option aliases
+### Aliases
 
-In both POSIX and Windows command lines, it's common for some options to have aliases, which are usually short forms that are quicker to type. 
+In both POSIX and Windows command lines, it's common for some options to have aliases, which are usually short forms that are quicker to type. In the following help example, `-v` and `--verbose` are aliases for the same option:
+
+```console
+-v, --verbose    Show verbose output 
+```
 
 ## Argument
 

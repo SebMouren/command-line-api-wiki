@@ -51,30 +51,31 @@ Now change your `Main` method to this:
 static int Main(string[] args)
 {
     // Create some options and a parser
-    Option intOption = new Option(
+    Option optionThatTakesInt = new Option(
         "--int-option",
         "An option whose argument is parsed as an int",
         new Argument<int>(defaultValue: 42));
-    Option boolOption = new Option(
+    Option optionThatTakesBool = new Option(
         "--bool-option",
         "An option whose argument is parsed as a bool",
         new Argument<bool>());
-    Option fileOption = new Option(
+    Option optionThatTakesFileInfo = new Option(
         "--file-option",
         "An option whose argument is parsed as a FileInfo",
         new Argument<FileInfo>());
 
     // Add them to the root command
     var rootCommand = new RootCommand();
-    rootCommand.AddOption(intOption);
-    rootCommand.AddOption(boolOption);
-    rootCommand.AddOption(fileOption);
+    rootCommand.Description = "My sample app";
+    rootCommand.AddOption(optionThatTakesInt);
+    rootCommand.AddOption(optionThatTakesBool);
+    rootCommand.AddOption(optionThatTakesFileInfo);
 
-    rootCommand.Handler = CommandHandler.Create<int, bool, FileInfo>((i, b, f) =>
+    rootCommand.Handler = CommandHandler.Create<int, bool, FileInfo>((intOption, boolOption, fileOption) =>
     {
-        Console.WriteLine($"The value for --int-option is: {i}");
-        Console.WriteLine($"The value for --bool-option is: {b}");
-        Console.WriteLine($"The value for --file-option is: {f?.FullName ?? "null"}");
+        Console.WriteLine($"The value for --int-option is: {intOption}");
+        Console.WriteLine($"The value for --bool-option is: {boolOption}");
+        Console.WriteLine($"The value for --file-option is: {fileOption?.FullName ?? "null"}");
     });
 
     // Parse the incoming args and invoke the handler
