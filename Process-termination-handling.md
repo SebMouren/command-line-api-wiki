@@ -1,23 +1,23 @@
 # General
 
-`System.CommandLine` supports performing actions when the invocation is being stopped due to process termination. For example, aborting an ongoing transaction, or flushing some data to disk.
+`System.CommandLine` supports performing actions when the invocation is stopped due to process termination, such as aborting an ongoing transaction or flushing some data to disk.
 
-Process termination can be forcefull, which means the process is terminated by the OS and it doesn't get a chance to cleanup. This is _killing_ a process.
+Process termination can be forceful, which means the process is terminated by the operating system and it doesn't get a chance to clean up. This is _killing_ a process.
 
-Process termination can also be requested. For example, the user presses Control-C on an interactive application, or the system asks a service to terminate.
+Process termination can also be requested, for example when a user presses `Ctrl-C` on an interactive application or the system asks a service to terminate.
 
-# Implementing termination handling
+## Implementing termination handling
 
-To add termination handling to a command, you must add a `CancellationToken` argument to the command handler. This token can be passed to async APIs. Cancellation actions can also be added directly using the `CancellationToken.Register` method.
+To add termination handling to a command, you must add a `CancellationToken` argument to the command handler. This token can then be passed along to async APIs that you might call from within your handler. Cancellation actions can also be added directly using the `CancellationToken.Register` method.
 
 ```c#
-CommandHandler.Create(async (IConsole console, CancellationToken ct) =>
+CommandHandler.Create(async (IConsole console, CancellationToken token) =>
 {
     try
     {
         using (var httpClient = new HttpClient())
         {
-            await httpClient.GetAsync("http://www.example.com", ct);
+            await httpClient.GetAsync("http://www.example.com", token);
         }
         return 0;
     }
@@ -27,13 +27,4 @@ CommandHandler.Create(async (IConsole console, CancellationToken ct) =>
         return 1;
     }
 });
-```
-
-To enable cancellation, the `CancelOnProcessTermination` middleware must be added to the `CommandLineBuilder`. This middleware is part of `UseDefaults`.
-
-```c#
-var builder =  new CommandLineBuilder()
-    . ...
-    .CancelOnProcessTermination()
-    . ...
 ```
