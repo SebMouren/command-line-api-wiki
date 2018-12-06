@@ -11,7 +11,7 @@ Process termination can also be requested, for example when a user presses `Ctrl
 To add termination handling to a command, you must add a `CancellationToken` argument to the command handler. This token can then be passed along to async APIs that you might call from within your handler. Cancellation actions can also be added directly using the `CancellationToken.Register` method.
 
 ```c#
-CommandHandler.Create(async (IConsole console, CancellationToken token) =>
+myCommand.Handler = CommandHandler.Create(async (IConsole console, CancellationToken token) =>
 {
     try
     {
