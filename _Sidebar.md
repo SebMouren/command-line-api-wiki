@@ -11,4 +11,6 @@
 * [Debugging](Features-overview#debugging)
 * [Termination handling](Process-termination-handling)
 
+[Command Line Syntax](command-line-syntax)
+
 [How do I...?](how-do-i)
