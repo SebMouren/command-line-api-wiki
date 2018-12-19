@@ -33,7 +33,7 @@ public void DoSomething(int anInt, string aString)
 
 There are currently two models for configuring the `System.CommandLine` parser to pass these parameters.
 
-### Options-first
+### Syntax-first
 
 One approach that you can use is to configure the parser directly by adding `Option`s to your `RootCommand`.
 
