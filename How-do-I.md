@@ -104,6 +104,33 @@ The following command lines will be equivalent:
 > myapp serialise
 ```
 
+## How do I add a subcommand?
 
+Commands can have child commands and can nest as many levels as you like. You can add a subcommand like this:
 
+```csharp
+var command = new RootCommand("command");
+var subcommand = new Command("subcommand");
+command.Add(subcommand);
+var subsubcommand = new Command("subsubcommand");
+subcommand.Add(subsubcommand);
 
+```
+
+The innermost subcommand in this example can be invoked like this:
+
+```console
+> command subcommand subsubcommand
+```
+
+Collection initializer syntax is supported, so the following is equivalent:
+
+```csharp
+var command = new RootCommand("command")
+{
+    new Command("subcommand")
+    {
+        new Command("subsubcommand")
+    }
+};
+```
