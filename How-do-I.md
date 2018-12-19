@@ -42,8 +42,8 @@ static void Main()
 {
     var rootCommand = new RootCommand();
 
-    rootCommand.AddOption(new Option("--an-int"));
-    rootCommand.AddOption(new Option("--a-string"));
+    rootCommand.Add(new Option("--an-int"));
+    rootCommand.Add(new Option("--a-string"));
 
     rootCommand.Handler = CommandHandler.Create<int, string>(DoSomething);
 
