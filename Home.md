@@ -12,7 +12,9 @@ With .NET Core, .NET programs increasingly run on Linux and MacOS, where users h
 
 ### History
 
-This effort has its roots in the building of the `dotnet` CLI, which put significant demands on its parser. While there were a number of .NET command line parsing libraries available, including more than a couple built at Microsoft, none of them quite had the set of capabilities we needed. With the arrival global tools, we wanted to improve upon and share some of that work.
+This effort has its roots in the building of the `dotnet` CLI, which put significant demands on its parser. While there were a number of .NET command line parsing libraries available, including more than a couple built at Microsoft, none of them quite had the set of capabilities we needed. 
+
+With the arrival global tools, we anticipated people writing more console applications. We decided to write a new console library that built on some of the ideas in the `dotnet` CLI's parser and added a number of new features.
 
 1. _Parsing._ The parse operation in `System.CommandLine` produces a `ParseResult` that can be used independently of any invocation. This was important for being able to test your parsing in isolation. We also provide a tokenizer to mimic what happens before `Main(string[])` is called, so you can test using a `string` rather than a `string[]` as parser input. The parse model also supports altering and re-parsing input. This enabled features such as [suggestions](Features-overview#Suggestions) and [directives](Command-line-syntax.md#directives).
 
