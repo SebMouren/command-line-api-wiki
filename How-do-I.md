@@ -134,3 +134,71 @@ var command = new RootCommand("command")
     }
 };
 ```
+
+
+## Argument validation and binding
+
+Arguments can have default values, expected types, and configurable arity. `System.CommandLine` will reject arguments that don't match these expectations. 
+
+In this example, a parse error is displayed because the input "not-an-int" could not be converted to an `int`:
+
+```console
+> myapp --int-option not-an-int
+Cannot parse argument 'not-an-int' as System.Int32.
+```
+
+In this example, too many arguments are being passed to `--int-option`:
+
+```console
+> myapp --int-option 1 --int-option 2
+Option '--int-option' expects a single argument but 2 were provided.
+```
+
+This is an example of an arity error. `--int-option` has an arity of exactly one (`ArgumentArity.ExactlyOne`), meaning that if the option is specified, a single argument must also be provided.
+
+Boolean options, sometimes called "flags", have an arity of `ArgumentArity.ZeroOrOne`. This is because all of the following are valid ways to specify a `bool` option:
+
+```console
+> myapp --bool-option
+The value of intOption is: 42
+The value of boolOption is: True
+The value of fileOption is: null
+
+> myapp --bool-option true
+The value of intOption is: 42
+The value of boolOption is: True
+The value of fileOption is: null
+
+> myapp --bool-option false
+The value of intOption is: 42
+The value of boolOption is: False
+The value of fileOption is: null
+```
+
+`System.CommandLine` also knows how to bind other argument types. For example, enums and file system objects such as `FileInfo` and `DirectoryInfo` can be bound. `FileInfo` and `DirectoryInfo` examples of a more general convention whereby any type that has a constructor taking a single `string` parameter can be bound without having to write any custom code. But you can also write your own binding logic for your custom types.
+
+## Middleware Pipeline
+
+While each command has a handler which `System.CommandLine` will route to based on input, there is also a mechanism for short circuiting or altering the input before invoking you application logic. In between parsing and invocation, there is a chain of responsibility, which you can customize. A number of features of `System.CommandLine` make use of this. This is how `--help` and `--version` options short circuit calls into your application logic. 
+
+Each call in the pipeline can take action based on the `ParseResult` and return early, or choose to call the next item in the pipeline. The `ParseResult` can even be replaced during this phase. The last call in the chain is the handler for the specified command.
+
+You can add a call to this pipeline by calling `CommandLineBuilder.UseMiddleware.` Here's an example that enables a custom directive:
+
+```csharp
+commandLineBuilder.UseMiddleware(async (context, next) => {
+    if (context.ParseResult.Directives.Contains("just-say-hi"))
+    {
+        context.Console.Out.WriteLine("Hi!");
+    } else
+    {
+        await next(context);
+    }
+});
+```
+```console
+> myapp [just-say-hi] --int-option 1234
+Hi!
+```
+
+In the code above, the middleware responds to this directive and short-circuits. This means the normal action of the command (outputting values) does not occur.
