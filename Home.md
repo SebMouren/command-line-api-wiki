@@ -36,6 +36,6 @@ For more complex scenarios, you can use the core APIs directly.
 
 ## Contribute
 
-There's still a good deal of work to be done to make `System.CommandLine` great. If you want to help, please open an [issue](https://github.com/dotnet/command-line-api/issues) or [contribute](https://github.com/dotnet/command-line-api/blob/master/CONTRIBUTING.md).
+There's still a good deal of work to be done to make `System.CommandLine` great. If you want to help, please comment on or open an [issue](https://github.com/dotnet/command-line-api/issues), or [contribute](https://github.com/dotnet/command-line-api/blob/master/CONTRIBUTING.md).
 
 ![layers](https://user-images.githubusercontent.com/547415/50188724-5fcceb00-02d7-11e9-9c33-4b91d70f963e.png)

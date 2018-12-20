@@ -1,6 +1,66 @@
-# How do I...?
+# How To
 
-## How do I call a method?
+## Add an alias to an option or command
+
+Both commands and options support [aliases](Concepts#Aliases). You can add an alias to an option like this:
+
+```csharp
+    var option = new Option("--verbose");
+    option.AddAlias("-v");
+```
+
+Given this alias, the following command lines will be equivalent:
+
+```console
+> myapp -v
+> myapp --verbose
+```
+
+Command aliases work the same way.
+
+```csharp
+    var command = new Command("serialize");
+    command.AddAlias("serialise");
+```
+
+The following command lines will be equivalent:
+
+```console
+> myapp serialize
+> myapp serialise
+```
+
+## Add a subcommand
+
+Commands can have child commands and can nest as many levels as you like. You can add a subcommand like this:
+
+```csharp
+var command = new RootCommand("command");
+var subcommand = new Command("subcommand");
+command.Add(subcommand);
+var subsubcommand = new Command("subsubcommand");
+subcommand.Add(subsubcommand);
+```
+
+The innermost subcommand in this example can be invoked like this:
+
+```console
+> command subcommand subsubcommand
+```
+
+Collection initializer syntax is supported, so the following is equivalent:
+
+```csharp
+var command = new RootCommand("command")
+{
+    new Command("subcommand")
+    {
+        new Command("subsubcommand")
+    }
+};
+```
+
+## Call a method?
 
 The simplest case for invoking your code, if you have a program so simple that it has no inputs beyond invocation itself, would look like this:
 
@@ -20,7 +80,7 @@ static void Main()
 
 Of course, if your program is so simple that is has no inputs, you probably didn't need a command line parser and you can `/* do something */` directly in the body of `Main`. Nonetheless, this will give you some additional [features](Features-overview).
 
-## How do I pass parameters to a method?
+## Pass parameters to a method
 
 Usually, your `/* do something */` method has parameters and you would like these to be specified using command line options. 
 
@@ -69,72 +129,9 @@ static void Main()
 
     rootCommand.InvokeAsync(args).Wait();
 }
-
 ```
 
 `ConfigureFromMethod` adds options to your command based on the parameters of the specified method. Options are created using a naming convention that converts camel-cased parameters to kebab-cased options. In this example, the parameter `anInt` generates an option with the alias `--an-int`;
-
-## How do I add an alias to an option or command?
-
-Both commands and options support [aliases](Concepts#Aliases). You can add an alias to an option like this:
-
-```csharp
-    var option = new Option("--verbose");
-    option.AddAlias("-v");
-```
-
-Given this alias, the following command lines will be equivalent:
-
-```console
-> myapp -v
-> myapp --verbose
-```
-
-Command aliases work the same way.
-
-```csharp
-    var command = new Command("serialize");
-    command.AddAlias("serialise");
-```
-
-The following command lines will be equivalent:
-
-```console
-> myapp serialize
-> myapp serialise
-```
-
-## How do I add a subcommand?
-
-Commands can have child commands and can nest as many levels as you like. You can add a subcommand like this:
-
-```csharp
-var command = new RootCommand("command");
-var subcommand = new Command("subcommand");
-command.Add(subcommand);
-var subsubcommand = new Command("subsubcommand");
-subcommand.Add(subsubcommand);
-
-```
-
-The innermost subcommand in this example can be invoked like this:
-
-```console
-> command subcommand subsubcommand
-```
-
-Collection initializer syntax is supported, so the following is equivalent:
-
-```csharp
-var command = new RootCommand("command")
-{
-    new Command("subcommand")
-    {
-        new Command("subsubcommand")
-    }
-};
-```
-
 
 ## Argument validation and binding
 

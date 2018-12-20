@@ -1,7 +1,14 @@
-`System.CommandLine` provides a set of default features that are useful to people using it to develop apps as well as to the users of those apps. This is a quick overview of those features, using the app we created in 
-[Your first app with System.CommandLine](Your-first-app-with-System.CommandLine) or [Your first app with System.CommandLine.DragonFruit](Your-first-app-with-System.CommandLine.DragonFruit) (which are functionally equivalent). 
+`System.CommandLine` provides a set of default features for both people using it to develop apps and for the users of those apps. This is a quick overview of some of those features. 
 
-### Get help
+# Suggestions
+
+Programs written using `System.CommandLine` have built-in support for tab completion. 
+
+![suggest](https://user-images.githubusercontent.com/547415/48972576-1217d800-efe2-11e8-8653-8063ddc6864f.gif)
+
+To enable it, the end user has to take a few steps once per shell, outlined [here](dotnet-suggest). Once this is done, completions will work for all apps written using `System.CommandLine`.
+
+# Get help
 
 Command line applications typically have a way to get help, in order to understand the available options and their usage.
 
@@ -17,7 +24,7 @@ Options:
   --version        Display version information
 ```
 
-Users might be used to different prefixes in different ecosystems, especially if your app targets .NET Core and is used cross-platform, so apps build on `System.CommandLine` understand many different ways of requesting help. The following are all equivalent:
+Users might be accustomed to different prefixes in different ecosystems, especially if your app targets .NET Core and is used cross-platform, so apps built on `System.CommandLine` understand many different ways of requesting help. The following are all equivalent:
 
 ```console
 > myapp -h
@@ -27,7 +34,7 @@ Users might be used to different prefixes in different ecosystems, especially if
 > myapp /?
 ```
 
-### Version option
+# Version option
 
 Providing a way to check the version of your app is helpful to your users.
 
@@ -38,22 +45,13 @@ Providing a way to check the version of your app is helpful to your users.
 1.0.0
 ```
 
-### Suggestions
+# Parse preview
 
-Programs written using `System.CommandLine` have built-in support for tab completion. 
-
-![suggest](https://user-images.githubusercontent.com/547415/48972576-1217d800-efe2-11e8-8653-8063ddc6864f.gif)
-
-To enable it, the end user has to take a few steps once per shell, outlined [here](dotnet-suggest). Once this is done, completions will work for all apps written using `System.CommandLine`.
-
-### Parse preview
-
-Both users and developers might often find it useful to see how an app will parse a particular input. One of the default features of a `System.CommandLine` app is the `[parse]` directive, which lets you preview a parse:
+Both users and developers often find it useful to see how an app will interpret a given input. One of the default features of a `System.CommandLine` app is the `[parse]` directive, which lets you preview a parse:
 
 ```console
 > myapp [parse] --int-option not-an-int --file-option file.txt
 [ myapp ![ --int-option <not-an-int> ] [ --file-option <file.txt> ] *[ --bool-option <False> ] ]
-
 ```
 
 The `[parse]` directive tells the parser to parse the input and return a diagram of the result. Some things worth noting in the above example:
@@ -62,7 +60,7 @@ The `[parse]` directive tells the parser to parse the input and return a diagram
 * For the option result `![ --int-option <not-an-int> ]`, the `!` indicates a parsing error. `not-an-int` could not be parsed to the expected type.
 * For the option result `*[ --bool-option <False> ]`, the `*` indicates that a value was not specified on the command line, so the parser's configured default was used. `False` is the effective value for this option.
 
-### Debugging
+# Debugging
 
 When you're developing your app and you find that the parse preview isn't enough to explain something that's happening internally, the `[debug]` directive might help you. Set a breakpoint inside your code, prepend your command line input with `"[debug]"`, and hit `enter`:
 

@@ -1,4 +1,4 @@
-# Syntax Concepts
+# Syntax Concepts and Parser
 
 ## Tokens
 
@@ -54,13 +54,13 @@ In addition to a space delimiting an option and its argument, `=` and `:` are al
 
 ### Aliases
 
-In both POSIX and Windows command lines, it's common for some options to have aliases, which are usually short forms that are quicker to type. In the following help example, `-v` and `--verbose` are aliases for the same option:
+In both POSIX and Windows command lines, it's common for some options to have aliases, which are usually short forms that are easier to type. In the following help example, `-v` and `--verbose` are aliases for the same option:
 
 ```console
 -v, --verbose    Show verbose output 
 ```
 
-In `System.CommandLine`, both the `Command` and `Option` classes support adding [aliases](How-do-I#How-do-i#How-do-I-add-an-alias-to-an-option-or-command).
+In `System.CommandLine`, both the `Command` and `Option` classes support adding [aliases](How-To#Add-an-alias-to-an-option-or-command).
 
 ### Bundling
 
@@ -99,3 +99,7 @@ A directive must conform to the following rules:
 
 * It is a token on the command line coming after your app's name but before any subcommands or options, and
 * It is enclosed in square brackets.
+* It does not contain spaces.
+
+
+
