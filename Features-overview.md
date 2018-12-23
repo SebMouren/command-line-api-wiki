@@ -4,7 +4,7 @@
 
 Programs written using `System.CommandLine` have built-in support for tab completion. 
 
-![suggest](https://user-images.githubusercontent.com/547415/48972576-1217d800-efe2-11e8-8653-8063ddc6864f.gif)
+![t-rex-suggestions](https://user-images.githubusercontent.com/547415/50387753-ef4c1280-06b8-11e9-90c8-89466d0bb406.gif)
 
 To enable it, the end user has to take a few steps once per shell, outlined [here](dotnet-suggest). Once this is done, completions will work for all apps written using `System.CommandLine`.
 
