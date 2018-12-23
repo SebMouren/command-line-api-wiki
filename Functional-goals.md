@@ -1,11 +1,52 @@
 # Functional goals
 
-1. _Parsing._ The parse operation in `System.CommandLine` produces a `ParseResult` that can be used independently of any invocation. This was important for being able to test your parsing in isolation. We also provide a tokenizer to mimic what happens before `Main(string[])` is called, so you can test using a `string` rather than a `string[]` as parser input. The parse model also supports altering and re-parsing input. This enabled features such as [suggestions](Features-overview#Suggestions) and [directives](Command-line-syntax.md#directives).
+The high level goals for `System.CommandLine` support our idea that creating great command line experiences for your users can be easy. We have not yet met all of these goals. 
 
-2. _Middleware._ We wanted to provide features such as suggestions, help, parse analysis, exception handling, and parse debugging, and we wanted these features to be extensible while remaining separate from your app's core logic. To enable these things, `System.CommandLine` uses a composable chain of responsibility in between the parsing operation and the invocation. 
+## Goals for the end user's experience
 
-3. _Tab completion._ Tab completion is usually implemented using shell scripts that are crafted per app and per shell. We wanted a model that allowed your app, rather than a script, to be the source of truth, for suggestions to be extensible, and for adding support for additional shells to be easy.
+* Help should be clear and consistent
+  * I should not have to know the right syntax to get help. Just make all variations work.
+* Tab suggestion should just work with as little setup as possible.
 
-4. _Rendering._ Rendering output such as table layouts and animations is complicated, especially if you intend for that output to look correct regardless of whether you're writing to a non-ANSI terminal, an ANSI terminal, or when output is redirected. (This is the newest part of the project. It will be split into a separate assembly and the API is still very unstable.)
+## Goals for the programmer's experience
 
+* Help
+    * Creating some version of help should be automated, requiring no work.
+    * Help should be inforative if descriptions are supplied.
+    * Help localization should be straightforward.
 
+* Tab suggestion
+    * It should just work with no effort on the programmer's part.
+    * It should provide support for enums.
+    * It should have a mechanism for dynamic values.
+    * It should stay out of the way of shell suggestions for files and folders.
+    * Dynamic suggestions should be extensible for other things I might do.
+
+* Validation
+    * If there are parse errors, it should fail before my application code is called.
+    * It should check the number and type of arguments.
+    * It should generally fail if there are unmatched tokens, but I should be able to allow it to pass through.
+    * It should provide default response on validation issues.
+    * I should be able to customize the validation messages.
+ 
+* Debugging and testing
+    * I should not have to turn a string into an array to interact programmatically.
+    * At the command line, I should be able to ask how input will be interpreted by the parser.
+    * It should be easy to test parsing in isolation from the application.
+    * It should be easy to test the application in isolation from parsing.
+    * I should be able to specify at the command line that I want to attach a debugger.
+
+* Acting on parser results
+    * Argument results should be strongly typed.
+    * For advanced scenarios, I can alter and re-parse input.
+    * It makes it simple for me manage exceptions, output, and exit codes.
+
+* Rendering
+    * Provide ways to reason about layout rather than just text.
+    * Hide Windows/Linux/Mac differences for me.
+    * Take advantage of new Windows 10 console capabilities.
+    * Hide non-ANSI/ANSI differences for me.
+    * Make output look correct when redirected to a file.
+
+* Extensibility
+    * I can compose cross-cutting behaviors using packages.

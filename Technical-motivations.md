@@ -19,7 +19,7 @@
     * Localization support for all messages that the library emits.
     * Parse diagramming, to help people understand a program's syntax without invoking it, is available by default.
 
-* Subcommand routing, middleware, directives
+* A composable chain of responsibility for subcommand routing, middleware, directives, etc.
 
     * An invocation model allows for short-circuiting and interception, with access to the parser, meaning cross-cutting behaviors can easily be composed into your app via NuGet packages.
     * Simplify debugging by providing an interception hook in the middleware pipeline.

@@ -4,11 +4,14 @@
 
 _Give your users a great experience with your .NET console applications while letting you focus on the application you're writing._
 
-## Why another command line library?
+.NET has ways to interact with the console via `System.Console` and `Main` command arguments, but it does not provide an easy route to building command line applications that meet today's expectations. This is particularly true in the Linux and Mac ecosystem where users are accustomed to ANSI terminals and rich shell completions.
 
-Since the beginning, .NET has provided the `System.Console` API, which provides ways to read, write, and redirect standard input and output from the console, reposition the cursor, and change colors. 
+The new `System.CommandLine` sets out to:
 
-With .NET Core, .NET programs increasingly run on Linux and MacOS, where users have long been accustomed to ANSI terminals and rich shell completions. Providing that kind of experience using .NET has been a lot of work for developers. The new `System.CommandLine` is an attempt to make some of those things easier.
+* Reduce the time programmmers spend providing a command line API (CLI)
+* Improve the experience of the users of CLI programs
+
+## More information
 
 * [History](History)
 * [Functional goals](Functional-goals)
