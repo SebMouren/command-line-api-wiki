@@ -60,7 +60,7 @@ var command = new RootCommand("command")
 };
 ```
 
-## Call a method?
+## Call a method
 
 The simplest case for invoking your code, if you have a program so simple that it has no inputs beyond invocation itself, would look like this:
 

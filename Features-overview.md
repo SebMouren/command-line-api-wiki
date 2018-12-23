@@ -8,7 +8,7 @@ Programs written using `System.CommandLine` have built-in support for tab comple
 
 To enable it, the end user has to take a few steps once per shell, outlined [here](dotnet-suggest). Once this is done, completions will work for all apps written using `System.CommandLine`.
 
-# Get help
+# Help
 
 Command line applications typically have a way to get help, in order to understand the available options and their usage.
 
@@ -38,7 +38,7 @@ Users might be accustomed to different prefixes in different ecosystems, especia
 
 Providing a way to check the version of your app is helpful to your users.
 
-`System.CommandLine` provides this by default. In the [help](Features-overview#get-help) example you might have noticed an option, `--version`, that was not explicitly configured in the sample code. When you run your program with this option, you'll see something like this:
+`System.CommandLine` provides this by default. In the [help](Features-overview#Help) example you might have noticed an option, `--version`, that was not explicitly configured in the sample code. When you run your program with this option, you'll see something like this:
 
 ```console
 > myapp --version
@@ -70,3 +70,4 @@ Attach your debugger to process 14616 and then press any key.
 ```
 
 Once you've attached your debugger to the specified process, press any key and execution will proceed to your breakpoint.
+
