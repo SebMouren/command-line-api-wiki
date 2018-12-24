@@ -27,7 +27,7 @@
     * Command line API versioning.
 
 * Rich, adapative output rendering
-    * Write output code once and let us render it correctly based on the presence or absence of a terminal as well as terminal capabilities.
+    * Write output code once and render it correctly based on the presence or absence of a terminal as well as terminal capabilities.
     * Support for higher-level layouts, tables, event-based re-rendering, and animation.
 
 * Other things:

@@ -26,12 +26,12 @@ The high level goals for `System.CommandLine` support our idea that creating gre
     * If there are parse errors, it should fail before my application code is called.
     * It should check the number and type of arguments.
     * It should generally fail if there are unmatched tokens, but I should be able to allow it to pass through.
-    * It should provide default response on validation issues.
+    * It should provide default responses for the user on validation issues.
     * I should be able to customize the validation messages.
  
 * Debugging and testing
     * I should not have to turn a string into an array to interact programmatically.
-    * At the command line, I should be able to ask how input will be interpreted by the parser.
+    * I should be able to get a visualization of how a string is parsed.
     * It should be easy to test parsing in isolation from the application.
     * It should be easy to test the application in isolation from parsing.
     * I should be able to specify at the command line that I want to attach a debugger.
@@ -39,7 +39,7 @@ The high level goals for `System.CommandLine` support our idea that creating gre
 * Acting on parser results
     * Argument results should be strongly typed.
     * For advanced scenarios, I can alter and re-parse input.
-    * It makes it simple for me manage exceptions, output, and exit codes.
+    * It should be simple for me to manage exceptions, output, and exit codes.
 
 * Rendering
     * Provide ways to reason about layout rather than just text.

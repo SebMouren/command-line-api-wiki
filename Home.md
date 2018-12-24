@@ -4,14 +4,14 @@
 
 _Give your users a great experience with your .NET console applications while letting you focus on the application you're writing._
 
-.NET has ways to interact with the console via `System.Console` and `Main` command arguments, but it does not provide an easy route to building command line applications that meet today's expectations. This is particularly true in the Linux and Mac ecosystem where users are accustomed to ANSI terminals and rich shell completions.
+`System.CommandLine` is a set of libraries for building command line applications, including parsing, invocation, and rendering.
 
 The new `System.CommandLine` sets out to:
 
 * Reduce the time programmmers spend providing a command line API (CLI)
 * Improve the experience of the users of CLI programs
 
-## More information
+You can read more about it here:
 
 * [History](History)
 * [Functional goals](Functional-goals)
