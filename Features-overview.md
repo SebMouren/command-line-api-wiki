@@ -71,3 +71,48 @@ Attach your debugger to process 14616 and then press any key.
 
 Once you've attached your debugger to the specified process, press any key and execution will proceed to your breakpoint.
 
+# Adaptive rendering
+
+ANSI terminals support a variety of features by including ANSI escape sequences in standard input and output. These sequences can control the cursor, set text attributes and colors, and more. Windows [recently joined](https://blogs.msdn.microsoft.com/commandline/2018/06/27/windows-command-line-the-evolution-of-the-windows-command-line/) Linux and Mac in supporting these features, but it's not turned on by default. It can be enabled programmatically.
+
+`System.Console.Rendering` adds support for detecting and setting terminal settings. It also provides an API that can write output that looks correct based on those settings as well as when output is redirected, as is commonly the case on a build server or when your command line app is called by another command line app.
+
+The following are examples of output rendered by the same view code in these three different contexts.
+
+In PowerShell on Windows with virtual terminal mode enabled:
+
+![ansi](https://user-images.githubusercontent.com/547415/50388667-575b2280-06d2-11e9-91ae-36e8ffabbf8a.png)
+
+In PowerShell with virtual terminal mode disabled:
+
+![non-ansi](https://user-images.githubusercontent.com/547415/50388673-85d8fd80-06d2-11e9-844b-4690e4b4ab5a.png)
+
+Redirected to a text file:
+
+```
+Directory: C:\dev\command-line-api\build
+
+Name               Created             Modified          
+build.ps1          10/6/2018 10:56 AM  11/4/2018 7:10 PM 
+build.sh           10/6/2018 10:56 AM  11/4/2018 7:10 PM 
+cibuild.cmd        10/6/2018 10:56 AM  10/6/2018 10:56 AM
+cibuild.sh         10/6/2018 10:56 AM  10/6/2018 10:56 AM
+NuGet.props        10/6/2018 10:56 AM  10/6/2018 10:56 AM
+SignToolData.json  10/6/2018 10:56 AM  11/19/2018 1:56 PM
+Toolset.proj       10/6/2018 10:56 AM  10/6/2018 10:56 AM
+Versions.props     10/6/2018 10:56 AM  11/19/2018 1:56 PM
+
+```
+
+The raw text written to standard out in the first example is this:
+
+```
+[1;1H[39m[49m[2;1HDirectory: [38;2;235;30;180mC:\dev\command-line-api\build[39m[39m[49m[3;1H[39m[49m[4;1H[4mName[24m[39m[49m               [4;20H[4mCreated[24m[39m[49m             [4;40H[4mModified[24m[39m[49m          [5;1H[37mbuild.ps1[39m[39m[49m          [5;20H10/6/2018 [90m10:56 AM[39m[49m  [5;40H11/4/2018 [90m7:10 PM[39m[49m [6;1H[37mbuild.sh[39m[39m[49m           [6;20H10/6/2018 [90m10:56 AM[39m[49m  [6;40H11/4/2018 [90m7:10 PM[39m[49m [7;1H[37mcibuild.cmd[39m[39m[49m        [7;20H10/6/2018 [90m10:56 AM[39m[49m  [7;40H10/6/2018 [90m10:56 AM[39m[49m[8;1H[37mcibuild.sh[39m[39m[49m         [8;20H10/6/2018 [90m10:56 AM[39m[49m  [8;40H10/6/2018 [90m10:56 AM[39m[49m[9;1H[37mNuGet.props[39m[39m[49m        [9;20H10/6/2018 [90m10:56 AM[39m[49m  [9;40H10/6/2018 [90m10:56 AM[39m[49m[10;1H[37mSignToolData.json[39m[39m[49m  [10;20H10/6/2018 [90m10:56 AM[39m[49m  [10;40H11/19/2018 [90m1:56 PM[39m[49m[11;1H[37mToolset.proj[39m[39m[49m       [11;20H10/6/2018 [90m10:56 AM[39m[49m  [11;40H10/6/2018 [90m10:56 AM[39m[49m[12;1H[37mVersions.props[39m[39m[49m     [12;20H10/6/2018 [90m10:56 AM[39m[49m  [12;40H11/19/2018 [90m1:56 PM[39m[49m
+
+```
+
+ In virtual terminal mode, the Windows console interprets these escape sequences into cursor movements and colors. As you can see in the first example above, virtual terminal mode enables the display of RGB colors and underlining that are not supported otherwise on Windows. Most Linux and Mac terminals support this form of rendering by default. 
+ 
+ Both of these examples build the table structure by positioning the cursor for each cell and then writing the content. In a virtual terminal, this is done using ANSI escape sequences such as `[1;1H`. The equivalent `System.Console` call, which is needed in non-virtual terminals, looks like this: `Console.SetCursorPosition(0, 0)`. Meanwhile, the third example renders the layout using spaces and newlines, since there is no cursor when output is redirected.
+
+ Providing a common API across these very different modes so that you don't have to write the code three times is a major goal of `System.CommandLine.Rendering`. The API is still very rough but you can explore these capabilities in the `RenderingPlayground` [sample](https://github.com/dotnet/command-line-api/tree/master/samples/RenderingPlayground).
