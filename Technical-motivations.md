@@ -21,15 +21,20 @@
 
 * A composable chain of responsibility for subcommand routing, middleware, directives, etc.
 
-    * An invocation model allows for short-circuiting and interception, with access to the parser, meaning cross-cutting behaviors can easily be composed into your app via NuGet packages.
+    * An invocation model that allows for short-circuiting and interception, with access to the parser, meaning cross-cutting behaviors can be composed into your app via NuGet packages.
     * Simplify debugging by providing an interception hook in the middleware pipeline.
+    * Support for handling process cancellation.
     * Directive syntax provides a consistent extensibility point that does not interfere with your app's syntax.
-    * Command line API versioning.
+    * Supports command line API versioning via directives.
 
 * Rich, adapative output rendering
     * Write output code once and render it correctly based on the presence or absence of a terminal as well as terminal capabilities.
     * Support for higher-level layouts, tables, event-based re-rendering, and animation.
+    * Support for standard render mode hints via directives.
 
 * Other things:
     * Support arbitrarily deep nesting of subcommands.
     * Support response files.
+    * Restore console state after application exit.
+
+
