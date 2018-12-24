@@ -12,7 +12,7 @@ The high level goals for `System.CommandLine` support our idea that creating gre
 
 * Help
     * Creating some version of help should be automated, requiring no work.
-    * Help should be inforative if descriptions are supplied.
+    * Help should be informative if descriptions are supplied.
     * Help localization should be straightforward.
 
 * Tab suggestion
