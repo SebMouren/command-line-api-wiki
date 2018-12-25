@@ -62,6 +62,22 @@ In both POSIX and Windows command lines, it's common for some options to have al
 
 In `System.CommandLine`, both the `Command` and `Option` classes support adding [aliases](How-To#Add-an-alias-to-an-option-or-command).
 
+## Arguments
+
+An argument is a value passed to an option or command.
+
+```console
+> myapp --int-option 123
+        ^----------^
+        option argument
+       
+> myapp --int-option 123 "hello there"
+                         ^-----------^
+                         command argument
+```
+
+Arguments can have default values, expected types, and rules about how many values should be provided ("arity"). The arity of an option or command's argument refers to how many values can be passed if that option or command is specified.
+
 ### Bundling
 
 POSIX recommends that single-character options be allowed to be specified together after a single `-` prefix. The following command lines are equivalent:
@@ -77,12 +93,6 @@ If an argument is provided after an option bundle, it applies to the last option
 > myapp -a -b -c arg
 > myapp -abc arg
 ```
-
-## Arguments
-
-An argument is a value passed to an option or command.
-
-Arguments can have default values, expected types, and rules about how many values should be provided ("arity"). 
 
 ## Directives
 
