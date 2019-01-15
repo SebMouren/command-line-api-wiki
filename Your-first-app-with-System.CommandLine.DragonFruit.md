@@ -14,14 +14,14 @@ Open a new console and run the following commands:
 ## Install the System.CommandLine.DragonFruit package
 
 ```console
-> dotnet add package --source https://dotnet.myget.org/F/system-commandline/api/v3/index.json System.CommandLine.DragonFruit -v 0.1.0-alpha-63621-01
+> dotnet add package --source https://dotnet.myget.org/F/system-commandline/api/v3/index.json System.CommandLine.DragonFruit -v 0.1.0-alpha-63714-01
 ```
 
 ## Add some code
 
 Open `Program.cs`. You'll see that your `Main` method looks like this:
 
-```csharp
+```csharp 
 static void Main(string[] args)
 {
     Console.WriteLine("Hello World!");
