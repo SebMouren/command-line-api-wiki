@@ -9,7 +9,7 @@ On the machine where you'd like to enable completion, you'll need to do two thin
 1. Install the `dotnet-suggest` global tool by running the following command:
 
 ```console
-> dotnet tool install dotnet-suggest -g --add-source https://dotnet.myget.org/F/system-commandline/api/v3/index.json --version 1.*
+> dotnet tool install -g dotnet-suggest
 ```
 
 2. Add the appropriate shim script to your shell profile. You may have to create a shell profile file. The shim script will forward completion requests from your shell to the `dotnet-suggest` tool, which delegates to the appropriate `System.CommandLine`-based app.

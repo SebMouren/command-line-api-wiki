@@ -65,11 +65,21 @@ The `[parse]` directive tells the parser to parse the input and return a diagram
 When you're developing your app and you find that the parse preview isn't enough to explain something that's happening internally, the `[debug]` directive might help you. Set a breakpoint inside your code, prepend your command line input with `"[debug]"`, and hit `enter`:
 
 ```console
-myapp [debug] --file-option does-not-exist.txt
-Attach your debugger to process 14616 and then press any key.
+> myapp [debug] --file-option does-not-exist.txt
+Attach your debugger to process 14160 (myapp).
 ```
 
-Once you've attached your debugger to the specified process, press any key and execution will proceed to your breakpoint.
+Once you've attached your debugger to the specified process, execution will proceed to your breakpoint.
+
+# Response files
+
+Passing command line arguments via response files is helpful for very long command lines or for composing a command line from multiple sources. Here's an example:
+
+```console
+> myapp @c:\config\settings.rsp 
+```
+
+One or more response files can be specified in this way. Arguments and options are read from the file and expanded in-place as if they had been entered directly on the command line.
 
 # Adaptive rendering
 

@@ -19,6 +19,8 @@ You can read more about it here:
 
 ## Try it out
 
+[![Build Status](https://devdiv.visualstudio.com/DevDiv/_apis/build/status/System.CommandLine-Signed?branchName=master)](https://devdiv.visualstudio.com/DevDiv/_build/latest?definitionId=9498&branchName=master)
+
 The simplest way to create your parser is with the experimental [DragonFruit app model](DragonFruit-overview) app model. This works well if you have a single layer of commands (no subcommands).
 
 [Your first app with System.CommandLine.DragonFruit](Your-first-app-with-System.CommandLine.DragonFruit)

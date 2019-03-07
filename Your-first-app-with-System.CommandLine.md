@@ -14,7 +14,7 @@ Open a new console and run the following commands:
 ## Install the System.CommandLine.Experimental package
 
 ```console
-> dotnet add package --source https://dotnet.myget.org/F/system-commandline/api/v3/index.json System.CommandLine.Experimental -v 0.1.0-alpha-63724-02
+> dotnet add package System.CommandLine.Experimental -v 0.2.0-alpha.19156.3
 ```
 
 ## Add some code
