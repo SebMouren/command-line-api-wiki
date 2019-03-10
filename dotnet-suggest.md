@@ -6,11 +6,7 @@ Command line apps built using `System.CommandLine` have built-in support for tab
 
 On the machine where you'd like to enable completion, you'll need to do two things.
 
-1. Install the `dotnet-suggest` global tool by running the following command:
-
-```console
-> dotnet tool install -g dotnet-suggest
-```
+1. Install the `dotnet-suggest` global tool by running the following command: [![Nuget](https://img.shields.io/nuget/v/dotnet-suggest.svg)](https://nuget.org/packages/dotnet-suggest)   
 
 2. Add the appropriate shim script to your shell profile. You may have to create a shell profile file. The shim script will forward completion requests from your shell to the `dotnet-suggest` tool, which delegates to the appropriate `System.CommandLine`-based app.
 
