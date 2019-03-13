@@ -56,7 +56,7 @@ You're ready to run your program.
 
 ```console
 > dotnet run -- --int-option 123
-The value for --int-option is: 0
+The value for --int-option is: 123
 The value for --bool-option is: False
 The value for --file-option is: null
 ```
