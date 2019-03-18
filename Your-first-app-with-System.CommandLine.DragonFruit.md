@@ -13,10 +13,7 @@ Open a new console and run the following commands:
 
 ## Install the System.CommandLine.DragonFruit package
 
-```console
-> dotnet add package System.CommandLine.DragonFruit -v 0.2.0-alpha.19156.3
-```
-
+ [![Nuget](https://img.shields.io/nuget/v/System.CommandLine.DragonFruit.svg)](https://nuget.org/packages/System.CommandLine.DragonFruit) 
 ## Add some code
 
 Open `Program.cs`. You'll see that your `Main` method looks like this:
