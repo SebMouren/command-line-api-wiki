@@ -13,9 +13,7 @@ Open a new console and run the following commands:
 
 ## Install the System.CommandLine.Experimental package
 
-```console
-> dotnet add package System.CommandLine.Experimental -v 0.2.0-alpha.19156.3
-```
+[![Nuget](https://img.shields.io/nuget/v/System.CommandLine.Experimental.svg)](https://nuget.org/packages/System.CommandLine.Experimental)  
 
 ## Add some code
 
