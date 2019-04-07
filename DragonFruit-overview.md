@@ -11,7 +11,7 @@ static void Main(string[] args)
 
 Interpreting the `string[]` arguments into behaviors has been left as a task for the developer. Did the user ask for help? Did they pass invalid input? Can the input be converted to the types that you need if they're not `string`? These problems are not solved for you.
 
-What if you could declare a strongly-typed `Main` method? This was the question that led to the creation of the experimental app model called "DragonFruit", which allows you to create an entry point with arguments of various types and default values, like this:
+What if you could declare a strongly-typed `Main` method? This was the question that led to the creation of the experimental app model called "DragonFruit", which allows you to create an entry point with multiple parameters of various types and using default values, like this:
 
 ```csharp
 static void Main(int intOption = 42, bool boolOption = false, FileInfo fileOption = null)
@@ -74,8 +74,35 @@ Options:
   --file-option    An option whose argument will bind to a FileInfo
 ```
 
-You can try out DragonFruit by installing the latest preview package.
+## Arguments
+
+In addition to [options](Syntax-Concepts-and-Parser#Options) as shown in the examples above, DragonFruit also supports [arguments](Syntax-Concepts-and-Parser#Arguments). By convention, if you name a parameter in the `Main` method `args`, `argument`, or `arguments`, it will be exposed as an argument rather than an option. 
+
+```csharp
+static void Main(int intOption = 42, string[] args = null)
+{
+    Console.WriteLine($"The value of intOption is: {intOption}");
+
+    foreach (var arg in args)
+    {
+        Console.WriteLine(arg);
+    }
+}
+```
 
 ```console
-> dotnet add package --source https://dotnet.myget.org/F/system-commandline/api/v3/index.json System.CommandLine.DragonFruit -v 0.1.0-alpha-63724-02
+> myapp -h
+Usage:
+  myapp [options] <args>
+
+Arguments:
+  <args>
+
+Options:
+  --int-option <INT-OPTION>    intOption
+  --version                    Display version information
 ```
+
+The argument follows the same conventions for arity as described in [arguments](Syntax-Concepts-and-Parser#Arguments).
+
+You can try out DragonFruit by installing the latest preview [package](https://www.nuget.org/packages/System.CommandLine.DragonFruit).

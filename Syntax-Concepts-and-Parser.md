@@ -44,7 +44,7 @@ While `System.CommandLine` can be configured to use these and other prefixes, th
 
 ### Delimiters
 
-In addition to a space delimiting an option and its argument, `=` and `:` are also allowed. The following command lines are equivalent:
+In addition to a space delimiting an option from its argument, `=` and `:` are also allowed. The following command lines are equivalent:
 
 ```console
 > myapp --int-option 123
@@ -76,7 +76,25 @@ An argument is a value passed to an option or command.
                          command argument
 ```
 
-Arguments can have default values, expected types, and rules about how many values should be provided ("arity"). The arity of an option or command's argument refers to how many values can be passed if that option or command is specified.
+Arguments can have default values, expected types, and rules about how many values should be provided ("arity"). The arity of an option or command's argument refers to the number of values that can be passed if that option or command is specified. 
+
+Arity is expressed with a minimum value and a maximum value. These are the most common variants:
+
+| Min  | Max  | Examples                |                                |              
+|------|------|-------------------------|--------------------------------|
+| 0    | 1    | Valid:                  | --flag                         |
+|      |      |                         | --flag true                    |
+|      |      |                         | --flag false                   |
+|      |      | Invalid:                | --flag false false             |
+| 1    | 1    | Valid:                  | --file a.json                  |
+|      |      | Invalid:                | --file                         |
+|      |      |                         | --file a.json b.json           |
+| 0    | _n_  | Valid:                  | --file                         |
+|      |      |                         | --file a.json                  |
+|      |      |                         | --file a.json b.json           |
+| 1    | _n_  | Valid:                  | --file a.json                  |
+|      |      |                         | --file a.json b.json           |
+|      |      | Invalid:                | --file                         |
 
 ### Bundling
 
