@@ -62,7 +62,7 @@ In both POSIX and Windows command lines, it's common for some options to have al
 
 In `System.CommandLine`, both the `Command` and `Option` classes support adding [aliases](How-To#Add-an-alias-to-an-option-or-command).
 
-## Arguments
+## Arguments and arity
 
 An argument is a value passed to an option or command.
 
