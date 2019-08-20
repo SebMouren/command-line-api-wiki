@@ -48,32 +48,30 @@ Now change your `Main` method to this:
 ```csharp
 static int Main(string[] args)
 {
-    // Create some options and a parser
-    Option optionThatTakesInt = new Option(
-        "--int-option",
-        "An option whose argument is parsed as an int")
+    // Create a root command with some options
+    var rootCommand = new RootCommand
     {
-        Argument = new Argument<int>(defaultValue: () => 42)
-    };
-    Option optionThatTakesBool = new Option(
-        "--bool-option",
-        "An option whose argument is parsed as a bool")
-    {
-        Argument = new Argument<bool>()
-    };
-    Option optionThatTakesFileInfo = new Option(
-        "--file-option",
-        "An option whose argument is parsed as a FileInfo")
-    {
-        Argument = new Argument<FileInfo>()
+        new Option(
+            "--int-option",
+            "An option whose argument is parsed as an int")
+        {
+            Argument = new Argument<int>(defaultValue: () => 42)
+        },
+        new Option(
+            "--bool-option",
+            "An option whose argument is parsed as a bool")
+        {
+            Argument = new Argument<bool>()
+        },
+        new Option(
+            "--file-option",
+            "An option whose argument is parsed as a FileInfo")
+        {
+            Argument = new Argument<FileInfo>()
+        }
     };
 
-    // Add them to the root command
-    var rootCommand = new RootCommand();
     rootCommand.Description = "My sample app";
-    rootCommand.AddOption(optionThatTakesInt);
-    rootCommand.AddOption(optionThatTakesBool);
-    rootCommand.AddOption(optionThatTakesFileInfo);
 
     rootCommand.Handler = CommandHandler.Create<int, bool, FileInfo>((intOption, boolOption, fileOption) =>
     {
