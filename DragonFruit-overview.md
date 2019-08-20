@@ -103,6 +103,6 @@ Options:
   --version                    Display version information
 ```
 
-The argument follows the same conventions for arity as described in [arguments](Syntax-Concepts-and-Parser#Arguments).
+The argument follows the same conventions for arity as described in [arguments](Syntax-Concepts-and-Parser#Arguments-and-arity).
 
 You can try out DragonFruit by installing the latest preview [package](https://www.nuget.org/packages/System.CommandLine.DragonFruit).

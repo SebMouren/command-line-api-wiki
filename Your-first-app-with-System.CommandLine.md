@@ -37,10 +37,10 @@ Now, let's add a parser.
 You'll need a few more `using` directives:
 
 ```csharp
+using System;
 using System.CommandLine;
 using System.CommandLine.Invocation;
 using System.IO;
-using System.Threading.Tasks;
 ```
 
 Now change your `Main` method to this:
@@ -51,16 +51,22 @@ static int Main(string[] args)
     // Create some options and a parser
     Option optionThatTakesInt = new Option(
         "--int-option",
-        "An option whose argument is parsed as an int",
-        new Argument<int>(defaultValue: 42));
+        "An option whose argument is parsed as an int")
+    {
+        Argument = new Argument<int>(defaultValue: () => 42)
+    };
     Option optionThatTakesBool = new Option(
         "--bool-option",
-        "An option whose argument is parsed as a bool",
-        new Argument<bool>());
+        "An option whose argument is parsed as a bool")
+    {
+        Argument = new Argument<bool>()
+    };
     Option optionThatTakesFileInfo = new Option(
         "--file-option",
-        "An option whose argument is parsed as a FileInfo",
-        new Argument<FileInfo>());
+        "An option whose argument is parsed as a FileInfo")
+    {
+        Argument = new Argument<FileInfo>()
+    };
 
     // Add them to the root command
     var rootCommand = new RootCommand();
