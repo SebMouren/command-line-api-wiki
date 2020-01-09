@@ -114,16 +114,24 @@ If an argument is provided after an option bundle, it applies to the last option
 
 ## Directives
 
-`System.CommandLine` introduces a syntactic concept called a "directive". Here's an example of a directive:
+`System.CommandLine` introduces a syntactic concept called a *directive*. Here's an example:
 
 ```console
-> myapp [debug] --int-option 123
-        ^-----^
+> dotnet-interactive [parse] jupyter --verbose /connect.json
+                     ^-----^
 ```
 
-The purpose of directives is to provide cross-cutting functionality that can be made consistent across command line apps without interfering with the syntax of those apps. Because directives are separate from the app-specific syntax, an invalid directive is ignored rather than causing a parsing error.
+The `[parse]` directive outputs a diagram of the parse result rather than invoking the command line tool:
 
-A directive must conform to the following rules: 
+```console
+[ dotnet-interactive [ jupyter [ --verbose <True> ] [ connection-file <connect.json> ] *[ --default-kernel <csharp> ] ] ]
+```
+
+Another example of a use for directives is setting the [output rendering mode](Features-overview.md#rendering-directives).
+
+The general goal of directives is to provide cross-cutting functionality that can be made consistent across command line apps. Because directives are syntatically distinct from the app's own parameters, an input such as `[parse]` can be made consistent across apps. An unrecognized directive will be ignored rather than causing a parsing error.
+
+A directive must conform to the following syntax rules: 
 
 * It is a token on the command line coming after your app's name but before any subcommands or options, and
 * It is enclosed in square brackets.

@@ -83,17 +83,17 @@ One or more response files can be specified in this way. Arguments and options a
 
 # Adaptive rendering
 
-ANSI terminals support a variety of features by including ANSI escape sequences in standard input and output. These sequences can control the cursor, set text attributes and colors, and more. Windows [recently joined](https://blogs.msdn.microsoft.com/commandline/2018/06/27/windows-command-line-the-evolution-of-the-windows-command-line/) Linux and Mac in supporting these features, but it's not turned on by default. It can be enabled programmatically.
+ANSI terminals support a variety of features by including ANSI escape sequences in standard input and output. These sequences can control the cursor, set text attributes and colors, and more. Windows [recently joined](https://blogs.msdn.microsoft.com/commandline/2018/06/27/windows-command-line-the-evolution-of-the-windows-command-line/) Linux and Mac in supporting these features. This is a capability of the new Windows Terminal and can be enabled programmatically in the Windows 10 Console.
 
-`System.Console.Rendering` adds support for detecting and setting terminal settings. It also provides an API that can write output that looks correct based on those settings as well as when output is redirected, as is commonly the case on a build server or when your command line app is called by another command line app.
+`System.Console.Rendering` adds support for detecting terminal settings and enabling the Window 10 Console's ANSI mode on demand. It also provides an API that can write output that looks correct based on those settings as well as when output is redirected, as is commonly the case on a build server or when your command line app is called by another command line app.
 
 The following are examples of output rendered by the same view code in these three different contexts.
 
-In PowerShell on Windows with virtual terminal mode enabled:
+In PowerShell on Windows with ANSI mode enabled:
 
 ![ansi](https://user-images.githubusercontent.com/547415/50388667-575b2280-06d2-11e9-91ae-36e8ffabbf8a.png)
 
-In PowerShell with virtual terminal mode disabled:
+In PowerShell with ANSI mode disabled:
 
 ![non-ansi](https://user-images.githubusercontent.com/547415/50388673-85d8fd80-06d2-11e9-844b-4690e4b4ab5a.png)
 
@@ -121,8 +121,26 @@ The raw text written to standard out in the first example is this:
 
 ```
 
- In virtual terminal mode, the Windows console interprets these escape sequences into cursor movements and colors. As you can see in the first example above, virtual terminal mode enables the display of RGB colors and underlining that are not supported otherwise on Windows. Most Linux and Mac terminals support this form of rendering by default. 
+ In ANSI mode, the Windows Console interprets these escape sequences into cursor movements and colors. As you can see in the first example above, ANSI mode enables the display of RGB colors and underlining that are not supported otherwise on Windows. Most Linux and macOS terminals as well as the Windows Terminal support this form of rendering by default.
  
- Both of these examples build the table structure by positioning the cursor for each cell and then writing the content. In a virtual terminal, this is done using ANSI escape sequences such as `\u001b[1;1H`. The equivalent `System.Console` call, which is needed in non-virtual terminals, looks like this: `Console.SetCursorPosition(0, 0)`. Meanwhile, the third example renders the layout using spaces and newlines, since there is no cursor when output is redirected.
+ The examples above build the table structure by positioning the cursor for each cell and then writing the content. In an ANSI-capable terminal, this is done using ANSI escape sequences such as `\u001b[1;1H`. The equivalent `System.Console` call, which is needed in non-ANSI terminals, looks like this: `Console.SetCursorPosition(0, 0)`. Meanwhile, the third example renders the layout using spaces and newlines, since there is no cursor when output is redirected.
 
  Providing a common API across these very different modes so that you don't have to write the code three times is a major goal of `System.CommandLine.Rendering`. The API is still very rough but you can explore these capabilities in the `RenderingPlayground` [sample](https://github.com/dotnet/command-line-api/tree/master/samples/RenderingPlayground).
+
+ ## Rendering directives
+
+Output modes can also be specified directly. If you know that you want a specific form of output, you can bypass the mode detection of `System.CommandLine.Rendering` and use a [directive](Syntax-Concepts-and-Parser.md#directives).
+
+The following example will output ANSI to a text file.
+
+```console
+> .\RenderingPlayground.exe [output:ansi] --sample dir > sample.txt
+```
+
+(The parameter for the output directive is case-insensitive.)
+
+The supported output modes are:
+
+* `Ansi`: Output is rendered using ANSI escape sequences. In-place re-rendering is supported.
+* `NonAnsi`: Output is rendered using `System.Console` cursor positioning. In-place re-rendering is supported.
+* `PlainText`: Output is rendered with additional whitespace so that, for example, if redirected to a text file, the layout will look correct. In-place re-rendering is not supported.
