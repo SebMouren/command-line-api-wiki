@@ -136,6 +136,7 @@ A directive must conform to the following syntax rules:
 * It is a token on the command line coming after your app's name but before any subcommands or options, and
 * It is enclosed in square brackets.
 * It does not contain spaces.
+* It can include an argument, separated from the directive name by a colon.
 
 
 
