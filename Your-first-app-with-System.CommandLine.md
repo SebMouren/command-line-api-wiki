@@ -51,24 +51,19 @@ static int Main(string[] args)
     // Create a root command with some options
     var rootCommand = new RootCommand
     {
-        new Option(
-            "--int-option",
-            "An option whose argument is parsed as an int")
+        var rootCommand = new RootCommand
         {
-            Argument = new Argument<int>(defaultValue: () => 42)
-        },
-        new Option(
-            "--bool-option",
-            "An option whose argument is parsed as a bool")
-        {
-            Argument = new Argument<bool>()
-        },
-        new Option(
-            "--file-option",
-            "An option whose argument is parsed as a FileInfo")
-        {
-            Argument = new Argument<FileInfo>()
-        }
+            new Option<int>(
+                "--int-option",
+                getDefaultValue: () => 42,
+                description: "An option whose argument is parsed as an int"),
+            new Option<bool>(
+                "--bool-option",
+                "An option whose argument is parsed as a bool"),
+            new Option<FileInfo>(
+                "--file-option",
+                "An option whose argument is parsed as a FileInfo")
+        };
     };
 
     rootCommand.Description = "My sample app";
