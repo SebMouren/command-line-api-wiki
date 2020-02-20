@@ -106,14 +106,8 @@ static void Main()
 {
     var rootCommand = new RootCommand();
 
-    rootCommand.Add(new Option("--an-int")
-    {
-        Argument = new Argument<int>()
-    });
-    rootCommand.Add(new Option("--a-string")
-    {
-        Argument = new Argument<string>()
-    });
+    rootCommand.Add(new Option<int>("--an-int"));
+    rootCommand.Add(new Option<string>("--a-string"));
 
     rootCommand.Handler = CommandHandler.Create<int, string>(DoSomething);
 
