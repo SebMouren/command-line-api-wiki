@@ -13,7 +13,7 @@ Open a new console and run the following commands:
 
 ## Install the System.CommandLine.Experimental package
 
-[![Nuget](https://img.shields.io/nuget/v/System.CommandLine.Experimental.svg)](https://nuget.org/packages/System.CommandLine.Experimental)  
+[![Nuget](https://img.shields.io/nuget/v/System.CommandLine.svg)](https://nuget.org/packages/System.CommandLine)  
 
 ## Add some code
 
